@@ -1066,7 +1066,8 @@ Las comunicaciones entre los diferentes módulos se realizan mediante **llamadas
 <a name="_page74_x69.00_y157.00"></a>Referencias Bibliográficas Anexos
 1ASI0572 – Family Solutions - Pág.
 
-72 
+[Video de Exposición: https://upcedupe-my.sharepoint.com/:v:/g/personal/u201916837_upc_edu_pe/EWk7LDfbFRRLl5H9jVXoo60BfY6J9Q1aahgE5cGxNxQbVg?e=I3JcP3&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D](https://upcedupe-my.sharepoint.com/:v:/g/personal/u201916837_upc_edu_pe/EWk7LDfbFRRLl5H9jVXoo60BfY6J9Q1aahgE5cGxNxQbVg?e=I3JcP3&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
+
 
 [ref1]: assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.003.png
 [ref2]: assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.005.png

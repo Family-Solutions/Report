@@ -1,0 +1,2810 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.001.png" alt=""></p>
+<p><strong>Universidad Peruana de Ciencias Aplicadas</strong> Ingeniería de Software</p>
+<p>8vo Ciclo</p>
+<p><strong>Desarrollo de Soluciones IOT</strong> Sección: 2941</p>
+<p>Profesor: Marco Antonio Leon Baca “INFORME DEL TRABAJO FINAL” Startup: Family Solutions</p>
+<p>Producto: CollarLink Integrantes:</p>
+<table>
+<thead>
+<tr>
+<th>Apellidos y Nombres del integrante</th>
+<th>Código de Integrante</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ortiz Vera Gianfranco</td>
+<td>U201916837</td>
+</tr>
+<tr>
+<td>Lobato Pozo, Sebastian Valente</td>
+<td>U202215312</td>
+</tr>
+<tr>
+<td>Palma Obiso, Adrián Enrique Jesús</td>
+<td>U202210066</td>
+</tr>
+<tr>
+<td>Carbajal Pozzo, Joaquín Alonso</td>
+<td>U202121881</td>
+</tr>
+<tr>
+<td>Carrasco Godos, Juan Fernando</td>
+<td>U20211D118</td>
+</tr>
+</tbody>
+</table>
+<p>Abril, 2025</p>
+<p><a name="_page1_x69.00_y72.00"></a>Registro de Versiones</p>
+<p>A continuación se detalla los avances y las correcciones relevantes durante el desarrollo del proyecto FamilySolutions, donde demostramos nuestra participación dentro del ciclo de vida del proyecto.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Version</strong></th>
+<th><strong>Fecha</strong></th>
+<th><strong>Autor</strong></th>
+<th><strong>Descripción de modificación</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>TB1</strong></td>
+<td><code> </code>26/04/2025</td>
+<td><p>- Ortiz Vera Gianfranco </p><p>- Lobato Pozo, Sebastian Valente </p><p>- Palma Obiso, Adrián Enrique Jesús </p><p>- Carbajal Pozzo, Joaquín Alonso </p><p>- Carrasco Godos, Juan Fernando </p></td>
+<td><p>Se  han  incluido  los  siguientes capítulos dentro del desarrollo del proyecto: </p><p>- Capitulo I: Introducción </p><p>- Capitulo II: Requirements Elicitation &amp; Analysis </p><p>- Capitulo III: Requirements Specification </p><p>- Capítulo IV: Product Architecture Design </p></td>
+</tr>
+</tbody>
+</table>
+<p><a name="_page2_x69.00_y72.00"></a>Project Report Collaboration Insights</p>
+<p><a name="_page3_x69.00_y72.00"></a>Contenido</p>
+<h1 id="contenido">Contenido</h1>
+<ul>
+<li><a href="#_page1_x69.00_y72.00">Registro de Versiones</a></li>
+<li><a href="#_page2_x69.00_y72.00">Project Report Collaboration Insights</a></li>
+<li><a href="#_page3_x69.00_y72.00">Contenido</a></li>
+<li><a href="#_page4_x69.00_y535.00">Student Outcome</a></li>
+<li><a href="#_page7_x69.00_y72.00"><strong>Capítulo I: Introducción</strong></a>
+<ul>
+<li><a href="#_page7_x69.00_y106.00">1. Startup Profile</a>
+<ul>
+<li><a href="#_page7_x69.00_y139.00">1.1 Descripción de la Startup</a></li>
+<li><a href="#_page8_x69.00_y278.00">1.2 Perfiles de integrantes del equipo</a></li>
+</ul>
+</li>
+<li><a href="#_page10_x69.00_y72.00">2. Solution Profile</a>
+<ul>
+<li><a href="#_page10_x69.00_y97.00">1.2.2 Antecedentes y problemática</a></li>
+</ul>
+</li>
+<li><a href="#_page16_x69.00_y72.00">3. Segmentos objetivo</a></li>
+</ul>
+</li>
+<li><a href="#_page17_x69.00_y72.00"><strong>Capítulo II: Requirements &amp; Analysis</strong></a>
+<ul>
+<li><a href="#_page17_x69.00_y102.00">1. Competidores</a></li>
+<li><a href="#_page19_x69.00_y295.00">2. Entrevistas</a>
+<ul>
+<li><a href="#_page19_x69.00_y319.00">2.1 Diseño de entrevistas</a></li>
+<li><a href="#_page21_x69.00_y96.00">2.2 Registro de entrevistas</a></li>
+<li><a href="#_page22_x69.00_y455.00">2.3 Análisis de entrevistas</a></li>
+</ul>
+</li>
+<li><a href="#_page23_x69.00_y72.00">3. Needfinding</a>
+<ul>
+<li><a href="#_page23_x69.00_y97.00">3.1 User Personas</a></li>
+<li><a href="#_page23_x69.00_y660.00">3.2 User Task Matrix</a></li>
+<li><a href="#_page26_x69.00_y72.00">3.3 User Journey Mapping</a></li>
+<li><a href="#_page27_x69.00_y98.00">3.4 Empathy Mapping</a></li>
+<li><a href="#_page28_x69.00_y72.00">3.5 As-is Scenario Mapping</a></li>
+</ul>
+</li>
+<li><a href="#_page28_x69.00_y259.00">4. Ubiquitous Language</a></li>
+</ul>
+</li>
+<li><a href="#_page29_x69.00_y72.00"><strong>Capítulo III: Requirements Specification</strong></a>
+<ul>
+<li><a href="#_page29_x69.00_y102.00">1. To-Be Scenario Mapping</a></li>
+<li><a href="#_page30_x69.00_y72.00">2. User Stories</a></li>
+<li><a href="#_page43_x69.00_y72.00">3. Impact Mappings</a></li>
+<li><a href="#_page44_x69.00_y72.00">4. Product Backlog</a></li>
+</ul>
+</li>
+<li><a href="#_page48_x69.00_y72.00"><strong>Capitulo IV: Strategic-Level Software Design</strong></a>
+<ul>
+<li><a href="#_page48_x69.00_y95.00">1. Strategic-Level Attribute-Driven Design</a>
+<ul>
+<li><a href="#_page48_x69.00_y237.00">4.1.1 EventStormingz</a></li>
+</ul>
+</li>
+<li><a href="#_page50_x69.00_y572.00">2. Candidate Context Discovery.</a></li>
+<li><a href="#_page51_x69.00_y464.00">3. Domain Message Flows Modeling.</a></li>
+<li><a href="#_page53_x69.00_y642.00">4. Bounded Context Canvases.</a></li>
+<li><a href="#_page54_x69.00_y382.00">5. Context Mapping</a></li>
+<li><a href="#_page55_x69.00_y448.00">6. Tactical-Level Domain-Driven Design</a>
+<ul>
+<li><a href="#_page55_x69.00_y497.00">6.1 Bounded Context: Geolocalización y Monitoreo</a></li>
+<li><a href="#_page59_x69.00_y72.00">6.2 Bounded Context: Gestión de Usuario y Mascotas</a></li>
+<li><a href="#_page64_x69.00_y98.00">6.3 Bounded Context User Interface (UI)</a></li>
+</ul>
+</li>
+<li><a href="#_page70_x69.00_y96.00">7. Software Architecture</a>
+<ul>
+<li><a href="#_page70_x69.00_y121.00">7.1 Software Architecture System Landscape Diagram</a></li>
+<li><a href="#_page70_x69.00_y383.00">7.2 Software Architecture Context Level Diagrams</a></li>
+<li><a href="#_page72_x69.00_y72.00">7.3 Software Architecture Container Level Diagrams</a></li>
+<li><a href="#_page73_x69.00_y392.00">7.4 Software Architecture Deployment Diagrams</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_page74_x69.00_y72.00">Conclusiones</a></li>
+<li><a href="#_page74_x69.00_y157.00">Referencias BibliográficasAnexos</a></li>
+</ul>
+<p><a name="_page4_x69.00_y535.00"></a>Student Outcome**</p>
+<p>El curso contribuye al cumplimiento del Student Outcome ABET:</p>
+<p><strong>ABET – EAC – Student Outcome 5</strong></p>
+<p>Aprendizaje continuo y autónomo</p>
+<p>Criterio:  La  capacidad  de  funcionar  efectivamente  en  un  equipo  cuyos  miembros  juntos proporcionan  liderazgo,  crean  un  entorno  de  colaboración  e  inclusivo,  establecen  objetivos, planifican tareas y cumplen objetivos. En el siguiente cuadro se describe las acciones realizadas y enunciados de conclusiones por parte del grupo, que permiten sustentar el haber alcanzado el logro del ABET – EAC - Student Outcome 5.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Criterio Específico</strong></th>
+<th><strong>Acciones Realizadas</strong></th>
+<th><strong>Conclusiones</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Trabaja  en equipo  para proporcionar liderazgo  en forma conjunta</td>
+<td><p><strong>TB1</strong> </p><p><strong>Joaquín  Carbajal:</strong>  Ayudé  a  organizar  el documento,  asignar  tareas  y  desarrollar actividades en conjunto.  </p><p><strong>Adrián Palma:</strong> Ayudé en la retroalimentación del product backlog, participé activamente en las  reuniones,  avancé  en  el  desarrollo  del Product Backlog y del Business Model Canvas, además de trabajar en el Bounded Context de Interfaces  de  Usuario,  incluyendo  la </p><p>elaboración de los diagramas de componentes, clases y bases de datos. </p><p><strong>Sebastian Lobato:</strong> Fomenté el trabajo en equipo al organizar las sesiones de Event Storming, donde me aseguré de que todos participaran. También impulsé las reuniones de avance, creando un espacio para que compartiéramos ideas y tomáramos decisiones juntos. </p><p><strong>Gianfranco  Ortiz  Vera:</strong>  Elaboré  el  primer capítulo y una parte del segundo, ayudé con las reuniones de equipo. </p><p><strong>Juan  Carrasco:</strong>  Participé  activamente  en  la elaboración de los User Stories y en la creación de los diagramas de arquitectura de software. Coordiné y colaboré con el equipo para definir y estructurar las necesidades del proyecto.** </p></td>
+<td>El trabajo en equipo fue fundamental para repartir responsabilidades  de manera  equilibrada. Ambos  miembros proporcionaron liderazgo en  diferentes  áreas, permitiendo  avanzar  de forma conjunta hacia los objetivos del proyecto.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Crea  un  entorno colaborativo  e inclusivo, establece  metas, planifica tareas y cumple objetivos.</th>
+<th><p><strong>TB1</strong> </p><p><strong>Joaquín Carbajal:</strong> Hice las User Stories y uno de  los  Bounded  Context  para  cumplir  los objetivos  grupales  y  permitir  que  mis  demás compañeros  logren  sus  propias  metas  en conjunto. </p><p><strong>Adrián Palma:</strong> Contribuí en la planificación y cumplimiento  de  los  objetivos  mediante  el avance del Product Backlog, el desarrollo del Business  Model  Canvas  y  la  realización completa del Bounded Context de Interfaces de Usuario,  incluyendo  los  diagramas  de componentes, clases y base de datos. </p><p><strong>Sebastian Lobato:</strong> Lideré las entrevistas con los usuarios y el análisis de los resultados, y mi trabajo en el Impact Mapping ayudó a establecer metas  claras  y  a  planificar  las  tareas  para cumplir con los objetivos del proyecto. </p><p><strong>Gianfranco  Ortiz  Vera:</strong>  Hice  uno  de  los bounded context y también trato de generar un ambiente tranquilo para mis compañeros </p><p><strong>Juan Carrasco:</strong> Contribuí a crear un ambiente de  trabajo  donde  todas  las  ideas  fueron consideradas.  Organicé  las  tareas  asignadas para  la  redacción  de  User  Stories  y  la realización de los diagramas.** </p></th>
+<th>Gracias a la colaboración continua, la planificación adecuada  y  el  apoyo mutuo, se logró cumplir con las metas propuestas de  manera  efectiva, manteniendo  un  entorno de  trabajo  inclusivo  y organizado.</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<p><a name="_page7_x69.00_y72.00"></a>Capítulo I: Introducción</p>
+<ol>
+<li>Startup<a name="_page7_x69.00_y106.00"></a> Profile</li>
+<li>Descripción<a name="_page7_x69.00_y139.00"></a> de la Startup</li>
+</ol>
+<p>Family Solutions es un startup enfocado en el desarrollo de soluciones tecnológicas que fortalezcan la seguridad y el bienestar familiar. Nuestro primer producto es una innovadora aplicación móvil que se conecta a un dispositivo IoT ubicado en el collar de las mascotas, permitiendo a los dueños monitorear su ubicación en tiempo real.</p>
+<p>CollarLink envía alertas automáticas si la mascota se aleja de una zona segura predefinida, como el hogar, brindando tranquilidad y una respuesta rápida ante posibles escapes o extravíos. Con una interfaz amigable y funciones personalizadas, nuestra solución está diseñada para ser accesible y útil para todas las familias que consideran a sus mascotas como un miembro más del hogar.</p>
+<p>En Family Solutions, creemos que la tecnología puede ser una aliada poderosa para cuidar a quienes más queremos.</p>
+<p><strong>Misión:</strong> Desarrollar soluciones tecnológicas accesibles e innovadoras que fortalezcan la seguridad y el bienestar del núcleo familiar, comenzando por el cuidado y protección de las mascotas a través de dispositivos inteligentes conectados.</p>
+<p><strong>Visión:</strong> Ser referentes en el desarrollo de tecnología familiar inteligente en América Latina, ofreciendo productos confiables que promuevan una convivencia segura, conectada y armoniosa entre personas y sus mascotas.</p>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.002.png" alt=""></p>
+<p>Logo de Family Solutions</p>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.003.png" alt="ref1"></p>
+<p>Logo de CollarLink</p>
+<ol start="2">
+<li>Perfiles<a name="_page8_x69.00_y278.00"></a> de integrantes del equipo</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><strong>Integrantes</strong></th>
+<th><strong>Descripción</strong></th>
+<th><strong>Conocimientos</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Joaquín Alonso Carbajal </p><p>Pozzo </p></td>
+<td>Soy estudiante de 7mo ciclo de la carrera de Ingeniería de Software. Me gusta el desarrollo backend y las metodologías ágiles.</td>
+<td>Conocimiento en Backend en Java, C++ y bases de datos en SQL y MongoDB.</td>
+</tr>
+<tr>
+<td><strong>Gianfranco Ortiz Vera</strong></td>
+<td><p>Mi nombre es Gianfranco Ortiz Vera, soy estudiante próximo a egresar de la carrera de Ingeniería de Software. Me interesa mucho el desarrollo de backend, el manejo de bases de datos y la cyberseguridad. </p><p>Me considero una persona humana y no puedo dormir si sé que tengo una tarea pendiente. </p></td>
+<td><p>Conocimiento en Backend en C#, C++, Python y bases de datos en SQL y MongoDB. Conocimiento basico de Javascript, Rust, Lua y COBOL. </p><p>Habilidades en uso de herramientas de cyberseguridad. </p></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Adrián Enrique Jesús Palma Obispo</strong></th>
+<th style="text-align:left">Estudiante de 19 años apasionado por la creatividad e innovación de mi carrera</th>
+<th style="text-align:left">C#, C++, javascript, python, html y css</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Sebastian Valente Lobato Pozo</strong></td>
+<td style="text-align:left">Soy un estudiante de 20 años de carrera de igenieria de software. Me gusta el desarrollo frontend, análisis de datos, automatizar procesos con python y el manejo de base de datos.</td>
+<td style="text-align:left">Java, Dart, Python, SQL, LUA, Librrerias/Frameworks como Pandas, React, Flutter.</td>
+</tr>
+</tbody>
+</table>
+<ol start="2">
+<li>Solution<a name="_page10_x69.00_y72.00"></a> Profile</li>
+<li>Antecedentes<a name="_page10_x69.00_y97.00"></a> y problemática</li>
+</ol>
+<ul>
+<li><strong>What (Qué)</strong></li>
+</ul>
+<p>Muchas mascotas, especialmente perros y gatos, se escapan o se alejan de casa sin que sus dueños lo noten a tiempo, lo que puede llevar a que se pierdan, sufran accidentes o nunca regresen.</p>
+<ul>
+<li><strong>When (Cuándo)</strong></li>
+</ul>
+<p>En  cualquier  momento  del  día,  especialmente  cuando  las  puertas  o  portones  quedan abiertos,  durante  paseos  sin  correa,  en  eventos  con  fuegos  artificiales,  o  cuando  las mascotas se asustan por ruidos fuertes y huyen.</p>
+<ul>
+<li><strong>Where (Dónde)</strong></li>
+</ul>
+<p>Tanto en zonas urbanas como rurales. Es común en barrios residenciales, casas con jardín, parques, playas o zonas sin cerco.</p>
+<ul>
+<li><strong>Who (Quién)</strong></li>
+</ul>
+<p>A dueños de mascotas: familias, personas solteras, adultos mayores y niños que conviven con animales y desarrollan un vínculo afectivo con ellos.</p>
+<ul>
+<li><strong>Why (Por qué)</strong></li>
+</ul>
+<p>Porque  las  mascotas  son  miembros  importantes  de  la  familia,  y  su  pérdida  genera sufrimiento emocional, tiempo invertido en buscarlas, e incluso puede representar un riesgo para su vida (atropellos, robo, maltrato, etc.).</p>
+<ul>
+<li><strong>How (Cómo)</strong></li>
+</ul>
+<p>Las mascotas se escapan por una puerta mal cerrada, saltan una reja, rompen su correa o simplemente se alejan durante un paseo sin supervisión adecuada. Muchas veces esto ocurre sin que los dueños lo noten inmediatamente.</p>
+<ul>
+<li><strong>How much (Cuánto)</strong></li>
+</ul>
+<p>Se estima que millones de mascotas se pierden cada año a nivel mundial. La mayoría no lleva identificación visible ni sistemas de rastreo, y un gran porcentaje no es recuperado. Esto  genera  angustia  emocional,  pérdida  económica  (por  recompensa  o  gastos  de búsqueda), y en muchos casos, el animal no sobrevive.</p>
+<ol start="3">
+<li>Lean UX Process</li>
+</ol>
+<p>En el desarrollo de una solución en IoT para localizar a tu mascota en tiempo real, se identificaron varios problemas recurrentes que afectan la experiencia del usuario. Estos problemas reflejan las dificultades que enfrentan los usuarios al mantener sus mascotas vigiladas, especialmente cuando no están en casa por motivos de trabajo o viajes, donde es crucial saber dónde están a cada momento.</p>
+<p>Hemos observado distintos usuarios con sistemas similares y métodos sin soluciones IoT, se han detectado áreas clave  que generan  frustración y pérdida de  tiempo. Entre ellas está  la poca precisión al localizar a sus mascotas, la interfaz del usuario confusa o poco intuitiva, la falta de feedback para saber si el dispositivo está funcionando correctamente y la falta de personalización de zonas seguras. Además del retraso de las notificaciones y alertas.</p>
+<p>La comprensión de estos problemas ha sido fundamental para definir el enfoque de Lean UX en el desarrollo de nuestra plataforma, orientado a resolver estas dificultades con soluciones prácticas y efectivas,  que  proporcionen  una  experiencia  de  usuario  más  satisfactoria  y  eficiente  en  la localización de mascotas.</p>
+<ol>
+<li><em>Lean UX Problem Statement</em></li>
+</ol>
+<ul>
+<li>Hemos  observado  que  los  usuarios  se  sienten  frustrados  por  la  falta  de  precisión  y actualizaciones en tiempo real en los sistemas de rastreo de mascotas, lo que genera ansiedad y demora en reaccionar cuando una mascota se aleja.</li>
+<li>Hemos notado que los usuarios expresan frustración por la dificultad de configurar zonas seguras personalizadas y recibir alertas oportunas, lo que compromete la eficacia del sistema ante posibles fugas.</li>
+<li>Hemos detectado que los usuarios esperan una experiencia de uso más fluida y confiable, con  interfaces  intuitivas  y  dispositivos  cómodos  para  sus  mascotas,  evitando  así  la dependencia de soluciones poco prácticas o confiables.</li>
+</ul>
+<ol start="2">
+<li><em>Lean UX Assumptions</em> Business Assumptions:</li>
+<li>Los dueños de mascotas valoran una solución de rastreo en tiempo real más precisa y confiable que la mayoría de las opciones actuales disponibles en el mercado.</li>
+<li>Los usuarios están dispuestos a pagar por un dispositivo IoT y una app si esto les garantiza tranquilidad y una mayor probabilidad de recuperar a su mascota en caso de fuga.</li>
+<li>Una interfaz simple, intuitiva y personalizable aumenta la adopción y uso constante de la aplicación por parte de los usuarios no necesariamente técnicos.</li>
+<li>Los usuarios prefieren recibir alertas automáticas y personalizables cuando su mascota sale de una zona segura, en lugar de tener que monitorear manualmente.</li>
+<li>La comodidad del dispositivo para la mascota influye directamente en la satisfacción del usuario y en el uso continuo del producto.</li>
+<li>La integración de funcionalidades familiares o multicuenta (para compartir el monitoreo con otros miembros del hogar) incrementa el valor percibido de la app.</li>
+<li>Existen  mercados  dispuestos  a  adoptar  soluciones  tecnológicas  de  protección  para mascotas, incluso fuera de contextos urbanos, como zonas rurales o suburbanas.</li>
+</ol>
+<p><strong>User Assumptions: ¿Quién es el usuario?</strong></p>
+<p>Nuestros usuarios son personas que consideran a sus mascotas parte importante de su familia, especialmente dueños de perros o gatos que tienen acceso a exteriores (jardines, calles, parques, etc.). También pueden incluir familias, personas solteras o adultos mayores preocupados por la seguridad de sus animales.</p>
+<p><strong>¿Qué características son importantes?</strong></p>
+<ul>
+<li>Actualizaciones en tiempo real</li>
+<li>Alertas automáticas ante posibles fugas</li>
+<li>Una interfaz clara y fácil de usar</li>
+<li>Dispositivos pequeños, cómodos y seguros para su mascota</li>
+<li>Confiabilidad del sistema (sin errores críticos o desconexiones)</li>
+</ul>
+<p><strong>¿Dónde encaja nuestro producto en su trabajo o vida?</strong></p>
+<p>El producto encaja en su vida diaria como una herramienta de tranquilidad y supervisión pasiva. Lo  usan  para  estar  informados  del  paradero  de  su  mascota  sin  necesidad  de  revisarla constantemente, sobre todo cuando están en casa, en el trabajo, de viaje o dejando a la mascota al cuidado de alguien más.</p>
+<p><strong>¿Cuándo y cómo es nuestro producto usado?</strong></p>
+<p>Nuestro producto será utilizado por el segmento objetivo cuando no tenga una forma de supervisar su mascota de forma directa. La aplicación también notifica al usuario a través de su smartphone si es que su mascota sale de la zona asignada.</p>
+<p><strong>¿Cómo debe verse nuestro producto y cómo debe comportarse?</strong></p>
+<p>La  apariencia  y  comportamiento  deseado  de  CollarLink  debe  enfocarse  en  la  usabilidad  y eficiencia para vigilar mascotas, la interfaz de usuario debe ser simple y clara, con un diseño intuitivo que permita a los usuarios navegar fácilmente por la aplicación y acceder a todas las funciones importantes sin confusión. Por otro lado, debe verse como una aplicación limpia, organizada y con funcionalidades claras y directas que faciliten la vigilancia de mascotas.</p>
+<p><strong>Feature Assumptions:</strong></p>
+<ul>
+<li>Creemos que la aplicación debe contar con una interfaz intuitiva y accesible para todos los perfiles de usuario, por lo que las características se desarrollan teniendo en cuenta la simplicidad visual, íconos claros y flujos de navegación directos.</li>
+<li>Creemos que la app debe mostrar la ubicación de la mascota en tiempo real con alta precisión,  por  lo  que  las  características  incluyen  integración  con  tecnología  GPS optimizada y actualizaciones constantes del mapa.</li>
+<li>Creemos que los usuarios necesitan ser alertados inmediatamente si su mascota se aleja de una  zona  segura,  por  lo  que  las  características  incluyen  geocercas  personalizables  y notificaciones automáticas en tiempo real.</li>
+<li>Creemos que la batería del dispositivo es una preocupación clave para los usuarios, por lo que las características del sistema contemplan un consumo energético eficiente y opciones para visualizar el estado de carga en la app.</li>
+<li>Creemos que varios miembros de una familia podrían querer monitorear a la mascota, por lo  que  las  características  incluyen  acceso  multicuenta  o  compartido  para  permitir  la supervisión desde distintos dispositivos.</li>
+<li>Creemos que los usuarios valoran poder revisar el historial de ubicaciones de su mascota, por lo que las características incluyen un registro visual del recorrido diario de la mascota en el mapa.</li>
+</ul>
+<ol start="3">
+<li><em>Lean UX Hypothesis</em></li>
+</ol>
+<p><strong>Hypothesis  Statement  01:</strong> Creemos que, si mostramos la ubicación de la mascota en tiempo real a través de un mapa interactivo, los usuarios se sentirán más tranquilos al saber dónde está su mascota en todo momento. Sabremos que hemos tenido éxito cuando aumente el uso diario de la aplicación y disminuyan los reportes de pérdida de mascotas entre nuestros usuarios.</p>
+<p><strong>Hypothesis  Statement  02:</strong> Creemos que si implementamos alertas automáticas cuando la mascota salga de una zona segura, los  usuarios  reaccionarán  más  rápido  ante  posibles  fugas. Sabremos que hemos tenido éxito cuando la mayoría de las alertas sean vistas y respondidas por los usuarios en menos de 1 minuto y los casos de recuperación de mascotas aumenten.</p>
+<p><strong>Hypothesis  Statement  03:</strong> Creemos que, si el proceso de vincular el dispositivo IoT con la app es simple e intuitivo, los usuarios  completarán  la  configuración  inicial  sin  asistencia  externa. Sabremos  que  hemos  tenido  éxito  cuando  al  menos  el  80%  de  los  usuarios  configuren  su dispositivo correctamente en el primer intento.</p>
+<p><strong>Hypothesis  Statement  04:</strong> Creemos que, si permitimos que varios miembros de una familia puedan acceder al mismo perfil de  mascota,  los  usuarios  se  sentirán  más  acompañados  en  el  cuidado  de  su  animal. Sabremos que hemos tenido éxito cuando aumente el número de cuentas compartidas por mascota y se registre actividad de monitoreo desde múltiples dispositivos.</p>
+<ol start="4">
+<li><em>Lean UX Canvas</em></li>
+</ol>
+<p>El Lean UX Canvas es una herramienta utilizada en el campo del diseño centrado en el usuario (UX) y la metodología Lean para crear y desarrollar productos de manera más eficiente y efectiva. Su  objetivo  es  proporcionar  un  marco  estructurado  para  la  colaboración  entre  equipos multidisciplinarios. A continuación, se presenta el Lean UX Canvas trabajado por el equipo a través de la herramienta digital Mural:</p>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.004.jpeg" alt=""></p>
+<p><a href="https://app.mural.co/t/leanuxcanvas2270/m/leanuxcanvas2270/1745637101243/10b199b5d5f0698f9d1973ecebe5a213a4db2fc8?sender=u35380281691571ebab4e3769">Lean UX Canvas CollarLink </a></p>
+<ol start="3">
+<li>Segmentos<a name="_page16_x69.00_y72.00"></a> objetivo**</li>
+</ol>
+<p>Los segmentos objetivo de CollarLink consiste en personas o familias que tienen mascotas, estas personas trabajas y están fuera casi todo el día y no tienen tiempo para vigilar a sus mascotas. Aquí hay algunos segmentos específicos que podrían formar parte del público objetivo de CollarLink:</p>
+<p><strong>Dueños de mascotas urbanas con espacios abiertos:</strong>  Personas que viven en casas con jardín o acceso a exteriores, donde sus mascotas pueden salir fácilmente. Les preocupa que sus mascotas se escapen o se pierdan.</p>
+<p><strong>Familias con niños y mascotas:</strong> Hogares donde las mascotas son parte del entorno familiar. Valoran la seguridad y buscan tranquilidad al saber que la mascota está protegida sin tener que estar pendientes todo el tiempo.</p>
+<p><strong>Personas mayores o solteras que viven con una mascota:</strong> Tienen a su mascota como principal compañía y desean soluciones tecnológicas que les den control y seguridad sin complicaciones.</p>
+<p><strong>Amantes de los animales con afinidad tecnológica:</strong> Usuarios que ya utilizan apps de salud o gadgets para sus mascotas (alimentadores automáticos, cámaras, GPS), y están dispuestos a pagar por soluciones inteligentes que mejoren su cuidado.</p>
+<p><a name="_page17_x69.00_y72.00"></a>Capítulo II: Requirements &amp; Analysis</p>
+<ol>
+<li>Competidores</li>
+</ol>
+<p><a name="_page17_x69.00_y102.00"></a></p>
+<table><tr><th colspan="9"><b>Competitive Analysis Landscape</b> </th></tr>
+<tr><td colspan="2" rowspan="2">&#xBF;Por qu&#xE9; llevar a cabo este an&#xE1;lisis? </td><td colspan="7">&#xBF;Qui&#xE9;nes son nuestros principales competidores? </td></tr>
+<tr><td colspan="7">Gracias al an&#xE1;lisis de la competencia, se logra comprender el entorno competitivo en el que operar&#xE1; nuestro producto. Esto proporciona una visi&#xF3;n detallada de quienes son nuestros competidores directos e indirectos, logrando as&#xED;, trazar una estrategia s&#xF3;lida para alcanzar la m&#xE1;xima exposici&#xF3;n de nuestro producto, llegando as&#xED; a m&#xE1;s posibles consumidores. </td></tr>
+<tr><td colspan="1" valign="top"><b>Perfil</b> </td><td colspan="2" valign="top"><b>Overview</b></td><td colspan="1" valign="top"><p><b>CollarLink</b> </p><p>![ref2]</p></td><td colspan="1"><p><b>Fi Smart Dog Collar</b> </p><p>![](assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.006.png)</p></td><td colspan="2" valign="top"><p><b>Whistle Go Explore</b> </p><p>![](assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.007.png)</p></td><td colspan="3" valign="top"><p><b>Weenect Pets</b> </p><p>![](assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.008.png)</p></td></tr>
+<tr><td colspan="1" rowspan="3"></td><td colspan="2"></td><td colspan="1" valign="top">La aplicaci&#xF3;n que estamos desarrollando, consiste en un collar que se podr&#xE1; conectar a cualquier dispositivo m&#xF3;vil. </td><td colspan="1">Collar inteligente para perros que ofrece seguimiento GPS en tiempo real, monitoreo de actividad y sue&#xF1;o, con una bater&#xED;a de larga duraci&#xF3;n. </td><td colspan="2" valign="top">Dispositivo de rastreo GPS y monitoreo de salud para perros y gatos, con funciones adicionales como luz nocturna y alertas de actividad. </td><td colspan="3" valign="top">Peque&#xF1;o rastreador GPS para perros y gatos que ofrece seguimiento en tiempo real y funciones adicionales como llamadas al dispositivo.</td></tr>
+<tr><td colspan="9">Competitive Analysis Landscape </td></tr>
+<tr><td colspan="2" valign="top"><p>Ventaja Competitiva &#xBF;Qu&#xE9; valor </p><p>ofrecen a los clientes? </p></td><td colspan="1">Dispositivo vers&#xE1;til con opci&#xF3;n de conectarse a una variedad de equipos </td><td colspan="2">Destaca por su bater&#xED;a de hasta un mes de duraci&#xF3;n y dise&#xF1;o robusto y resistente al agua. </td><td colspan="2">Ofrece una combinaci&#xF3;n de seguimiento de ubicaci&#xF3;n y monitoreo de salud en un solo dispositivo, sin necesidad de una estaci&#xF3;n base. </td><td colspan="2">Ofrece funciones &#xFA;nicas como la capacidad de llamar al dispositivo y recibir alertas de bater&#xED;a baja, con precios competitivos. </td></tr>
+<tr><td colspan="1">Perfil de Marketing </td><td colspan="2">Mercado Objetivo </td><td colspan="1">Due&#xF1;os de mascotas en general que no </td><td colspan="2">Due&#xF1;os de perros activos, especialmente aquellos que viven en </td><td colspan="2">Due&#xF1;os de perros y gatos interesados en el bienestar integral de sus mascotas, </td><td colspan="2" valign="bottom">Due&#xF1;os de perros y gatos que buscan </td></tr>
+</table>
+<table><tr><th colspan="1"></th><th colspan="2"></th><th colspan="2" valign="top">tienen tiempo para vigilarlas </th><th colspan="2" valign="top">&#xE1;reas rurales o que realizan actividades al aire libre con sus mascotas.</th><th colspan="3" valign="top">especialmente aquellos preocupados por la salud y la actividad f&#xED;sica. </th><th colspan="1" valign="top">una soluci&#xF3;n de rastreo asequible y funcional, especialmente en Europa.  </th></tr>
+<tr><td colspan="1" rowspan="3" valign="top">Perfil del Producto </td><td colspan="2"><p>Productos </p><p>&amp; Servicios </p></td><td colspan="2">Collar IoT que se conectar&#xE1; a diferentes dispositivos mediante la aplicaci&#xF3;n Collarlink </td><td colspan="2" valign="top">Collar inteligente con m&#xF3;dulo GPS, aplicaci&#xF3;n m&#xF3;vil para seguimiento y planes de suscripci&#xF3;n para servicios de localizaci&#xF3;n.</td><td colspan="3" valign="top">Dispositivo de rastreo GPS, aplicaci&#xF3;n m&#xF3;vil con funciones de monitoreo de salud, suscripci&#xF3;n para servicios de localizaci&#xF3;n y salud.</td><td colspan="1" valign="top">Dispositivo de rastreo GPS, aplicaci&#xF3;n m&#xF3;vil, suscripciones con diferentes planes de precios.</td></tr>
+<tr><td colspan="2">Precios &amp; Costos </td><td colspan="2" valign="top">Precio del dispositivo: S/. 59.90 Subscripci&#xF3;n: S/. 24.90/mes </td><td colspan="2" valign="top"><p>Precio del dispositivo: $149.  </p><p>Suscripci&#xF3;n: $99/a&#xF1;o, $186/2 a&#xF1;os o $248/3 a&#xF1;os. </p></td><td colspan="3" valign="top"><p>Precio del dispositivo: $129.95. </p><p>Suscripci&#xF3;n: $9.95/mes o $99.95/a&#xF1;o. </p></td><td colspan="1">Precio del dispositivo: &#xA3;49.90. Suscripciones: &#xA3;7.90/mes, &#xA3;59.90/a&#xF1;o o &#xA3;89.90/2 a&#xF1;os. </td></tr>
+<tr><td colspan="2">Canales de distribuci&#xF3;n (web/m&#xF3;vil) </td><td colspan="2">Disponibles en el sitio web </td><td colspan="2">Disponible en l&#xED;nea a trav&#xE9;s de su sitio web y minoristas como Chewy.</td><td colspan="3">Disponible en l&#xED;nea a trav&#xE9;s de su sitio web y minoristas como Amazon y Walmart.</td><td colspan="1">Disponible en l&#xED;nea a trav&#xE9;s de su sitio web y minoristas como Amazon.</td></tr>
+<tr><td colspan="11">Competitive Analysis Landscape </td></tr>
+<tr><td colspan="2" rowspan="3">An&#xE1;lisis SWOT </td><td colspan="2">Fortalezas </td><td colspan="2">Una larga distancia de rastreo y la capacidad de delimitar geocercas </td><td colspan="2">Larga duraci&#xF3;n de bater&#xED;a, dise&#xF1;o duradero, m&#xFA;ltiples zonas seguras configurables. </td><td colspan="1">Integraci&#xF3;n de seguimiento de salud y ubicaci&#xF3;n, bater&#xED;a de larga duraci&#xF3;n, sin necesidad de estaci&#xF3;n base. </td><td colspan="2">Funciones &#xFA;nicas como llamadas al dispositivo, precios competitivos, adecuado para gatos y perros peque&#xF1;os. </td></tr>
+<tr><td colspan="2">Debilidades </td><td colspan="2">La larga distancia podr&#xED;a afectar la precisi&#xF3;n de rastreo y el intervalo de actualizaciones de rastreo. </td><td colspan="2">Requiere una estaci&#xF3;n base para cargar y establecer zonas seguras; solo compatible con collares de la marca Fi. </td><td colspan="1">Puede haber retrasos en las notificaciones cuando la mascota sale de la zona segura; no cuenta con interfaz web. </td><td colspan="2">Menor presencia en mercados fuera de Europa, dise&#xF1;o menos robusto en comparaci&#xF3;n con competidores. </td></tr>
+<tr><td colspan="2">Oportunidades </td><td colspan="2">Expansi&#xF3;n al mercado latinoamericano por la falta de </td><td colspan="2">Expansi&#xF3;n a mercados internacionales y desarrollo de caracter&#xED;sticas </td><td colspan="1">Ampliar las funciones de monitoreo de salud y </td><td colspan="2">Expansi&#xF3;n a mercados internacionales y desarrollo de nuevas </td></tr>
+</table>
+<table><tr><th colspan="1" rowspan="2"></th><th colspan="1"></th><th colspan="1" valign="top">competidores en esta &#xE1;rea  </th><th colspan="1" valign="top">adicionales como monitoreo de salud.</th><th colspan="1" valign="top">expandirse a nuevos mercados.</th><th colspan="1" valign="top">funciones para mejorar la experiencia del usuario.</th></tr>
+<tr><td colspan="1">Amenazas </td><td colspan="1">Competidores externos que entren al mercado </td><td colspan="1">Competencia creciente en el mercado de dispositivos de rastreo para mascotas y dependencia de la cobertura de la red LTE- M.</td><td colspan="1">Competencia de dispositivos con caracter&#xED;sticas similares y evoluci&#xF3;n tecnol&#xF3;gica en el mercado de dispositivos de rastreo.</td><td colspan="1">Competencia de dispositivos con caracter&#xED;sticas m&#xE1;s avanzadas y consolidaci&#xF3;n de marcas en el mercado de rastreo de mascotas.</td></tr>
+</table>
+<ol start="2">
+<li>Entrevistas</li>
+<li><a name="_page19_x69.00_y295.00"></a>Diseño<a name="_page19_x69.00_y319.00"></a> de entrevistas</li>
+</ol>
+<p>Preguntas generales:</p>
+<p>¿Cuál es su nombre?</p>
+<p>¿Cuántos años tiene?</p>
+<p>¿En qué ciudad y distrito reside actualmente?</p>
+<p>¿Cuál es su ocupación actual?</p>
+<p>¿Tiene alguna mascota? ¿Cuantas?</p>
+<p>¿Qué tanto viaja al año? ¿Lleva a su macota?</p>
+<p>Preguntas respecto a mascotas</p>
+<p>¿Ha contratado algún servicio de paseador de perros? (Solo si tiene perros de mascota) ¿Qué tanto confía en el servicio? (Solo si tiene perros de mascota)</p>
+<p>¿Alguna vez se le ha escapado una mascota? ¿Qué ha hecho para encontrarla?</p>
+<p>¿Utiliza algún sistema o servicio para vigilar a su mascota mientras usted no está en casa? ¿Lo recomendaría?</p>
+<p><strong>Explicar sobre la aplicación que estamos desarrollando CollarLink</strong> ¿Usaría esta aplicación si sale al mercado?</p>
+<p>¿Qué función recomendaría añadir?</p>
+<ol start="2">
+<li>Registro<a name="_page21_x69.00_y96.00"></a> de entrevistas</li>
+</ol>
+<p>Entrevista 1:</p>
+<p>Nombre: Alison Garrido Edad: 21</p>
+<p>Enlace de la entrevista:</p>
+<p><a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u202215312_upc_edu_pe/Ef6WaRQN9cpAkCaHh_Tyz6UBEjbWaanUIzqmB8LRsbOZRA?e=FbR9dz&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D">https://upcedupe- my.sharepoint.com/<img class="emoji" alt="v" src="data:image/png;base64,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" />/g/personal/u202215312_upc_edu_pe/Ef6WaRQN9cpAkCaHh_Tyz6UBE jbWaanUIzqmB8LRsbOZRA?e=FbR9dz&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWx BcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5 rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0 %3D </a></p>
+<p>Resumen de entrevista:</p>
+<p>Alison Garrido tiene 21 años, vive en Surco y trabaja en un call center de cobranza. Tiene tres mascotas: dos gatos (una hembra y un macho) y un perrito chihuahua. No viaja mucho durante el año, y cuando lo hace, suele dejar a sus mascotas al cuidado de alguien de confianza.</p>
+<p>Respecto a los servicios para mascotas, nunca ha contratado un paseador de perros porque siente desconfianza en dejar a su perrito con alguien desconocido. Una vez, uno de sus gatos se escapó, pero logró encontrarlo tras buscarlo en el vecindario y colocar avisos. Actualmente no utiliza sistemas de vigilancia para sus mascotas, aunque estaría interesada en uno.</p>
+<p>Cuando se le presentó <strong>CollarLink</strong>, la app que rastrea en tiempo real a las mascotas mediante un collar  inteligente,  Alison  mostró  gran  interés  y  afirmó  que  la  usaría,  especialmente  para  su chihuahua.  Sugirió  agregar  funciones  como  un  dispensador  de  comida  inteligente  o  una notificación de alimentación, así como un botón de emergencia que emita un sonido en el collar para ayudar a encontrar a la mascota más rápido.</p>
+<p>Entrevista 2:</p>
+<p>Nombre: Brayan Astoria</p>
+<p>Edad: 25</p>
+<p>Enlace de la entrevista:</p>
+<p><a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u202215312_upc_edu_pe/ESqYX0oIZq1ImwGuJJlklXAB1GGLRyl8ta4-6uf0hlEDqA?e=MgGk9H&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D">https://upcedupe- my.sharepoint.com/<img class="emoji" alt="v" src="data:image/png;base64,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" />/g/personal/u202215312_upc_edu_pe/ESqYX0oIZq1ImwGuJJlklXAB1G GLRyl8ta4- 6uf0hlEDqA?e=MgGk9H&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJ lYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJ yYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D </a></p>
+<p>Resumen de entrevista:</p>
+<p>Bryan Astoria tiene 25 años, vive en San Juan de Miraflores, Lima, y trabaja como profesor de psicología en un colegio de Chorrillos. Tiene tres gatos. No viaja con frecuencia y, cuando lo hace, deja a sus gatos en casa con suficiente comida y supervisión ocasional.</p>
+<p>No ha contratado servicios de paseador de perros, ya que no tiene canes. En una ocasión, uno de sus gatos se escapó por la ventana; Bryan lo buscó por el vecindario, colocó carteles y preguntó a los vecinos, logrando que su gato regresara solo al día siguiente. Actualmente no usa sistemas de vigilancia  para  sus  mascotas,  pero  le  gustaría  contar  con  cámaras  o  sensores  para  mayor tranquilidad.</p>
+<ol start="3">
+<li>Análisis<a name="_page22_x69.00_y455.00"></a> de entrevistas</li>
+</ol>
+<p>Las entrevistas con Bryan y Alison revelan un patrón común de preocupación y deseo de mayor seguridad en el cuidado de mascotas. Ambos entrevistados han experimentado la angustia de perder a sus mascotas, lo que subraya la necesidad de soluciones confiables de rastreo y vigilancia. Si bien sus perfiles difieren en cuanto a la tenencia de perros y el uso de servicios de terceros, ambos comparten un interés en la tecnología que les brinde tranquilidad. Alison, en particular, mostró un entusiasmo directo por CollarLink y aportó valiosas ideas para futuras funciones, como el dispensador de comida y el botón de emergencia. En conjunto, estas entrevistas validan la propuesta de valor de CollarLink y destacan la importancia de enfocarse en la autonomía del dueño, la tranquilidad mental y la exploración de funcionalidades adicionales que enriquezcan la experiencia del cuidado de mascotas.</p>
+<ol start="3">
+<li>Needfinding<a name="_page23_x69.00_y72.00"></a></li>
+<li>User<a name="_page23_x69.00_y97.00"></a> Personas</li>
+</ol>
+<p>Hemos observado que vamos a lidiar con un solo user persona, los dueños de mascotas o Dueños para acortar.</p>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.009.jpeg" alt=""></p>
+<ol start="2">
+<li>User<a name="_page23_x69.00_y660.00"></a> Task Matrix**</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><strong>TASK</strong></th>
+<th><strong>Dueño de mascota</strong></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th><strong>FREQUENCY</strong></th>
+<th><strong>IMPORTANCE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Consultar ubicación actual de la mascota</td>
+<td>Alta (varias veces al día)</td>
+<td>Crítica</td>
+</tr>
+<tr>
+<td style="text-align:left">Recibir alertas de alejamiento de la zona segura</td>
+<td>Media (ocasional, cuando sucede)</td>
+<td>Crítica</td>
+</tr>
+<tr>
+<td style="text-align:left">Configurar zonas seguras (geocercas)</td>
+<td>Baja (cuando se instala o se cambia de casa)</td>
+<td>Alta</td>
+</tr>
+<tr>
+<td style="text-align:left">Consultar historial de ubicaciones</td>
+<td>Media (semanal)</td>
+<td>Media</td>
+</tr>
+<tr>
+<td style="text-align:left">Ver estado de la batería del dispositivo</td>
+<td>Media (cada pocos días)</td>
+<td>Alta</td>
+</tr>
+<tr>
+<td style="text-align:left">Configurar perfiles de mascotas (nombre, foto, raza)</td>
+<td>Baja (solo configuración inicial o cambios raros)</td>
+<td>Media</td>
+</tr>
+<tr>
+<td style="text-align:left">Ajustar notificaciones (sonido, vibración, tipo de alerta)</td>
+<td>Baja (solo en ajustes)</td>
+<td>Media</td>
+</tr>
+<tr>
+<td style="text-align:left">Actualizar firmware del dispositivo IoT</td>
+<td>Muy baja (solo cuando se notifica)</td>
+<td>Media</td>
+</tr>
+<tr>
+<td style="text-align:left">Contactar soporte técnico</td>
+<td>Muy baja (solo si hay problemas)</td>
+<td>Alta en caso de fallo</td>
+</tr>
+</tbody>
+</table>
+<ol start="3">
+<li>User<a name="_page26_x69.00_y72.00"></a> Journey Mapping**</li>
+</ol>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.010.jpeg" alt=""></p>
+<ol start="4">
+<li>Empathy<a name="_page27_x69.00_y98.00"></a> Mapping</li>
+</ol>
+<p>Técnica utilizada en el diseño UX y la investigación de usuarios para comprender mejor las necesidades, emociones y comportamientos de los usuarios. Mapa Visual que representa desde la perspectiva del usuario el recorrido de sus necesidades y deseos en la problemática reconocida.</p>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.011.jpeg" alt=""></p>
+<ol start="5">
+<li>As-is<a name="_page28_x69.00_y72.00"></a> Scenario Mapping</li>
+</ol>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.012.jpeg" alt=""></p>
+<p><a href="https://miro.com/app/board/uXjVI91IZm8=/?share_link_id=950342037986">CollarLink As-Is Scenario Mapping </a></p>
+<ol start="4">
+<li>Ubiquitous<a name="_page28_x69.00_y259.00"></a> Language</li>
+</ol>
+<p><a name="_page29_x69.00_y72.00"></a>Capítulo III: Requirements Specification</p>
+<ol>
+<li>To-Be<a name="_page29_x69.00_y102.00"></a> Scenario Mapping</li>
+</ol>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.013.jpeg" alt=""></p>
+<p><a href="https://miro.com/app/board/uXjVI91db20=/?share_link_id=956394124092">CollarLink To-Be Scenario Mapping </a></p>
+<ol start="2">
+<li>User<a name="_page30_x69.00_y72.00"></a> Stories</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Story</th>
+<th>Título</th>
+<th>Descripción</th>
+<th>Criterios de Aceptación</th>
+<th style="text-align:left"></th>
+<th>Epic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ID</td>
+<td></td>
+<td></td>
+<td></td>
+<td style="text-align:left"></td>
+<td>ID</td>
+</tr>
+<tr>
+<td><strong>Epic 1: Autenticación y gestión de usuarios</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td><code> </code><strong>Como</strong> usuario</td>
+<td></td>
+<td></td>
+<td></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td><code> </code><strong>Quiero</strong> registrarme, iniciar sesión y gestionar mi cuenta</td>
+<td></td>
+<td></td>
+<td></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td><code> </code><strong>Para</strong> acceder de forma segura al sistema y proteger mis datos personales.</td>
+<td></td>
+<td></td>
+<td></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td>US01</td>
+<td>Registro de</td>
+<td>Como usuario</td>
+<td><strong>Escenario 1: Usuario crea una</strong></td>
+<td style="text-align:left"></td>
+<td>1</td>
+</tr>
+<tr>
+<td></td>
+<td>usuario</td>
+<td>quiero acceder a</td>
+<td><strong>cuenta</strong></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>un apartado de</td>
+<td><code> </code>Dado que el usuario ya está en la</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>registro para crear</td>
+<td>pestaña de registro</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>una cuenta</td>
+<td><code> </code>Cuando el usuario ingrese sus datos</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td><code> </code>Entonces el sistema le creará una</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>cuenta</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>Escenario 2: Usuario intenta</strong></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>registrarse pero los datos son</strong></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>inválidos</strong></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td><code> </code>Dado que el usuario ya está en la</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>pestaña de registro</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td><code> </code>Cuando el usuario ingrese sus datos</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td><code> </code>Entonces el sistema informará que</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>los datos son inválidos</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td>US02</td>
+<td>Inicio de</td>
+<td>Como usuario</td>
+<td><strong>Escenario 1: Usuario inicia sesión</strong></td>
+<td style="text-align:left"></td>
+<td>1</td>
+</tr>
+<tr>
+<td></td>
+<td>sesión</td>
+<td>registrado quiero</td>
+<td><strong>exitosamente</strong></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>iniciar sesión con</td>
+<td><code> </code>Dado que el usuario ya está en la</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>mi correo y</td>
+<td>pestaña de inicio de sesión</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>contraseña para</td>
+<td><code> </code>Cuando ingrese su correo y</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>acceder a mi</td>
+<td>contraseña correctos</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>cuenta</td>
+<td><code> </code>Entonces el sistema lo redirigirá al</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>panel principal</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>Escenario 2: Usuario ingresa</strong></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>credenciales incorrectas</strong></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td><code> </code>Dado que el usuario ya está en la</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>pestaña de inicio de sesión</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td><code> </code>Cuando ingrese un correo o</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>contraseña incorrectos</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td><code> </code>Entonces el sistema mostrará un</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>mensaje de error</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td>US03</td>
+<td>Cierre de</td>
+<td>Como usuario</td>
+<td><strong>Escenario 1: Usuario cierra sesión</strong></td>
+<td style="text-align:left"></td>
+<td>1</td>
+</tr>
+<tr>
+<td></td>
+<td>sesión</td>
+<td>quiero cerrar</td>
+<td><strong>correctamente</strong></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+<th>sesión para</th>
+<th style="text-align:left"></th>
+<th><code> </code>Dado que el usuario está</th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td>proteger mi</td>
+<td style="text-align:left"></td>
+<td>autenticado en el sistema</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td>información</td>
+<td style="text-align:left"></td>
+<td><code> </code>Cuando haga clic en el botón de</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td>personal</td>
+<td style="text-align:left"></td>
+<td>cerrar sesión</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+<td style="text-align:left"></td>
+<td><code> </code>Entonces el sistema lo redirigirá a la</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+<td style="text-align:left"></td>
+<td>pantalla de inicio</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">US04</td>
+<td style="text-align:left">Recuperació</td>
+<td>Como usuario</td>
+<td style="text-align:left"></td>
+<td><strong>Escenario 1: Usuario solicita</strong></td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">n de</td>
+<td>quiero recuperar mi</td>
+<td style="text-align:left"></td>
+<td><strong>recuperación de contraseña</strong></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">contraseña</td>
+<td>contraseña si la</td>
+<td style="text-align:left"></td>
+<td><code> </code>Dado que el usuario no recuerda su</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td>olvido para poder</td>
+<td style="text-align:left"></td>
+<td>contraseña</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td>ingresar</td>
+<td style="text-align:left"></td>
+<td><code> </code>Cuando solicite un enlace de</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td>nuevamente a mi</td>
+<td style="text-align:left"></td>
+<td>recuperación e ingrese su correo</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td>cuenta</td>
+<td style="text-align:left"></td>
+<td><code> </code>Entonces el sistema enviará el</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+<td style="text-align:left"></td>
+<td>enlace al correo proporcionado</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+<td style="text-align:left"></td>
+<td><strong>Escenario 2: Usuario intenta</strong></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+<td style="text-align:left"></td>
+<td><strong>recuperar con un correo no</strong></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+<td style="text-align:left"></td>
+<td><strong>registrado</strong></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+<td style="text-align:left"></td>
+<td><code> </code>Dado que el usuario está en la</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+<td style="text-align:left"></td>
+<td>pantalla de recuperación de</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+<td style="text-align:left"></td>
+<td>contraseña</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+<td style="text-align:left"></td>
+<td><code> </code>Cuando ingrese un correo no</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+<td style="text-align:left"></td>
+<td>registrado</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+<td style="text-align:left"></td>
+<td><code> </code>Entonces el sistema mostrará un</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+<td style="text-align:left"></td>
+<td>mensaje indicando que no existe</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+<td style="text-align:left"></td>
+<td>cuenta con ese correo</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+<td style="text-align:left"></td>
+<td></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">US05</td>
+<td style="text-align:left">Edición de</td>
+<td>Como usuario</td>
+<td style="text-align:left"></td>
+<td><strong>Escenario 1: Usuario actualiza su</strong></td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">perfil</td>
+<td>quiero editar mi</td>
+<td style="text-align:left"></td>
+<td><strong>información exitosamente</strong></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td>información</td>
+<td style="text-align:left"></td>
+<td><code> </code>Dado que el usuario está en la</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td>personal para</td>
+<td style="text-align:left"></td>
+<td>sección de perfil</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td>mantener mi</td>
+<td style="text-align:left"></td>
+<td><code> </code>Cuando modifique sus datos y</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td>cuenta actualizada</td>
+<td style="text-align:left"></td>
+<td>guarde los cambios</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+<td style="text-align:left"></td>
+<td><code> </code>Entonces el sistema actualizará su</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+<td style="text-align:left"></td>
+<td>información y mostrará un mensaje</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+<td style="text-align:left"></td>
+<td>de éxito</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+<td style="text-align:left"></td>
+<td><strong>Escenario 2: Usuario intenta</strong></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+<td style="text-align:left"></td>
+<td><strong>ingresar datos inválidos</strong></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+<td style="text-align:left"></td>
+<td><code> </code>Dado que el usuario está editando</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+<td style="text-align:left"></td>
+<td>su perfil</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+<td style="text-align:left"></td>
+<td><code> </code>Cuando ingrese un dato inválido</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+<td style="text-align:left"></td>
+<td>(por ejemplo, un correo mal escrito)</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+<td style="text-align:left"></td>
+<td><code> </code>Entonces el sistema mostrará un</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+<td style="text-align:left"></td>
+<td>mensaje de error</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Epic 2: Gestión de mascotas y collares</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><code> </code><strong>Como</strong> dueño de una mascota</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><code> </code><strong>Quiero</strong> registrar y administrar a mis mascotas y sus collares</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><code> </code><strong>Para</strong> poder rastrear su ubicación de forma personalizada.</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">US06</td>
+<td style="text-align:left">Registro de mascota</td>
+<td style="text-align:left">Como usuario quiero registrar a mi mascota para poder asociarla con un dispositivo GPS</td>
+<td style="text-align:left"><p><strong>Escenario 1: Usuario registra una mascota exitosamente</strong></p><p><code> </code>Dado que el usuario está en el apartado de registro de mascotas</p><p><code> </code>Cuando ingrese los datos requeridos de la mascota</p><p><code> </code>Entonces el sistema guardará la información y mostrará una confirmación </p><p><strong>Escenario 2: Usuario intenta registrar mascota con datos incompletos</strong> </p><p><code> </code>Dado que el usuario está registrando una mascota</p><p><code> </code>Cuando deje campos obligatorios vacíos </p><p><code> </code>Entonces el sistema mostrará un mensaje de error solicitando completar los campos </p></td>
+<td style="text-align:left">2</td>
+</tr>
+<tr>
+<td style="text-align:left">US07</td>
+<td style="text-align:left">Edición de datos de mascota</td>
+<td style="text-align:left">Como usuario quiero editar los datos de mi mascota para mantener su información actualizada</td>
+<td style="text-align:left"><p><strong>Escenario 1: Usuario edita los datos correctamente</strong> </p><p><code> </code>Dado que el usuario está en el perfil de su mascota </p><p><code> </code>Cuando modifique los datos y guarde los cambios </p><p><code> </code>Entonces el sistema actualizará la información de la mascota <strong>Escenario 2: Usuario intenta ingresar datos inválidos</strong> </p><p><code> </code>Dado que el usuario edita el perfil de su mascota </p><p><code> </code>Cuando ingrese datos incorrectos (por ejemplo, símbolos en el nombre) </p><p><code> </code>Entonces el sistema mostrará un mensaje de error </p></td>
+<td style="text-align:left">2</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>US08</th>
+<th>Visualización de mascotas registradas</th>
+<th style="text-align:left">Como usuario quiero ver una lista de mis mascotas registradas para gestionarlas fácilmente</th>
+<th style="text-align:left"><p><strong>Escenario 1: Usuario visualiza la lista de mascotas</strong> </p><p><code> </code>Dado que el usuario ha registrado al menos una mascota </p><p><code> </code>Cuando acceda a la sección de “Mis Mascotas” </p><p><code> </code>Entonces el sistema mostrará una lista con todas sus mascotas y sus datos básicos </p></th>
+<th>2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>US09</td>
+<td>Eliminación de mascota</td>
+<td style="text-align:left">Como usuario quiero eliminar una mascota del sistema para gestionar solo las activas</td>
+<td style="text-align:left"><p><strong>Escenario 1: Usuario elimina una mascota con confirmación</strong></p><p><code> </code>Dado que el usuario está viendo la lista de mascotas </p><p><code> </code>Cuando presione el botón de eliminar y confirme la acción </p><p><code> </code>Entonces el sistema eliminará la mascota de su cuenta</p><p><strong>Escenario 2: Usuario cancela la eliminación</strong> </p><p><code> </code>Dado que el usuario ha hecho clic en eliminar </p><p><code> </code>Cuando cancele la acción en el cuadro de confirmación </p><p><code> </code>Entonces el sistema no eliminará la mascota </p></td>
+<td>2</td>
+</tr>
+<tr>
+<td>US10</td>
+<td>Asociación de collar a una mascota</td>
+<td style="text-align:left">Como usuario quiero asociar un collar GPS a una mascota para poder rastrear su ubicación</td>
+<td style="text-align:left"><p><strong>Escenario 1: Usuario asocia un collar exitosamente</strong> </p><p><code> </code>Dado que el usuario tiene un dispositivo GPS disponible </p><p><code> </code>Cuando seleccione la mascota y agregue el ID del collar </p><p><code> </code>Entonces el sistema vinculará el dispositivo a esa mascota</p><p><strong>Escenario 2: Usuario intenta asociar un collar ya vinculado a otra mascota</strong> </p><p><code> </code>Dado que el usuario ingresa el ID del collar </p><p><code> </code>Cuando el collar ya esté registrado en otra cuenta </p><p><code> </code>Entonces el sistema mostrará un </p></td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+<th style="text-align:left">mensaje indicando que el collar ya está en uso</th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Epic 3: Ubicación y geolocalización en tiempo real</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><code> </code><strong>Como</strong> usuario</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><code> </code><strong>Quiero</strong> ver la ubicación de mi mascota en tiempo real</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Para</strong> saber dónde se encuentra en cada momento y actuar rápidamente si se aleja.</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">US11</td>
+<td style="text-align:left">Visualizar ubicación de la mascota en tiempo real</td>
+<td style="text-align:left">Como usuario quiero ver la ubicación de mi mascota en tiempo real para saber dónde se encuentra en todo momento</td>
+<td style="text-align:left"><p><strong>Escenario 1: Usuario visualiza la ubicación actual</strong> </p><p><code> </code>Dado que el collar de la mascota está encendido y conectado</p><p><code> </code>Cuando el usuario accede al mapa desde la app </p><p><code> </code>Entonces el sistema mostrará un marcador con la ubicación actual de la mascota </p><p><strong>Escenario 2: Fallo en la conexión del GPS</strong> </p><p><code> </code>Dado que el collar no tiene señal o está apagado </p><p><code> </code>Cuando el usuario accede al mapa</p><p><code> </code>Entonces el sistema mostrará un mensaje indicando que no hay conexión con el dispositivo </p></td>
+<td style="text-align:left">3</td>
+</tr>
+<tr>
+<td style="text-align:left">US12</td>
+<td style="text-align:left">Actualización automática de la ubicación</td>
+<td style="text-align:left">Como usuario, quiero actualizar la ubicación en tiempo real sin recargar la página para seguir los movimientos de mi mascota fluidamente</td>
+<td style="text-align:left"><p><strong>Escenario 1: El mapa actualiza la ubicación automáticamente</strong></p><p><code> </code>Dado que el usuario está visualizando el mapa </p><p><code> </code>Cuando la mascota se mueve</p><p><code> </code>Entonces el sistema actualizará la posición en el mapa automáticamente cada intervalo definido (por ejemplo, 10 segundos) <strong>Escenario 2: El usuario desactiva la actualización automática</strong> </p><p><code> </code>Dado que el usuario prefiere detener la actualización </p><p><code> </code>Cuando desactive esta función</p><p><code> </code>Entonces el sistema mantendrá fija la última ubicación mostrada</p></td>
+<td style="text-align:left">3</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>US13</th>
+<th style="text-align:left">Historial de ubicaciones recientes</th>
+<th style="text-align:left">Como usuario, quiero ver un historial de ubicaciones recientes de mi mascota para analizar sus movimientos pasados</th>
+<th style="text-align:left"><p><strong>Escenario 1: Visualización de historial disponible</strong> </p><p><code> </code>Dado que hay registros de ubicaciones recientes</p><p><code> </code>Cuando el usuario accede al historial </p><p><code> </code>Entonces el sistema mostrará las rutas en un mapa o listado por fecha y hora </p><p><strong>Escenario 2: No hay datos en el historial</strong> </p><p><code> </code>Dado que no existen registros en el período consultado </p><p><code> </code>Cuando el usuario solicite el historial </p><p><code> </code>Entonces el sistema informará que no hay datos disponibles </p></th>
+<th>3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>US14</td>
+<td style="text-align:left">Frecuencia de actualización de ubicación</td>
+<td style="text-align:left">Como usuario, quiero recibir información de ubicación con una frecuencia determinada para tener un rastreo balanceado entre precisión y batería</td>
+<td style="text-align:left"><p><strong>Escenario 1: El sistema respeta el intervalo configurado</strong> </p><p><code> </code>Dado que se ha definido una frecuencia de actualización</p><p><code> </code>Cuando la mascota se mueve</p><p><code> </code>Entonces el sistema actualizará su ubicación según ese intervalo <strong>Escenario 2: El usuario cambia la frecuencia</strong> </p><p><code> </code>Dado que el usuario quiere mayor o menor precisión </p><p><code> </code>Cuando seleccione una nueva frecuencia en la configuración </p><p><code> </code>Entonces el sistema aplicará la nueva frecuencia en las actualizaciones futuras </p></td>
+<td>3</td>
+</tr>
+<tr>
+<td>US15</td>
+<td style="text-align:left">Información de la última actualización</td>
+<td style="text-align:left">Como usuario, quiero saber cuándo fue la última vez que se actualizó la ubicación para evaluar si la</td>
+<td style="text-align:left"><p><strong>Escenario 1: El sistema muestra la hora de la última actualización</strong> </p><p><code> </code>Dado que el usuario está visualizando el mapa o historial </p><p><code> </code>Cuando seleccione una mascota</p><p><code> </code>Entonces el sistema mostrará la hora exacta de la última ubicación registrada </p></td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+<th style="text-align:left">información es confiable</th>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Epic 4: Geocercas y zonas seguras</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Como</strong> usuario</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><code> </code><strong>Quiero</strong> crear y administrar zonas seguras en el mapa</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><code> </code><strong>Para</strong> recibir alertas si mi mascota se sale de esas áreas.</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">US16</td>
+<td style="text-align:left">Creación de geocerca (zona segura)</td>
+<td style="text-align:left">Como usuario, quiero crear una geocerca dibujando un área en el mapa para delimitar la zona segura de mi mascota</td>
+<td style="text-align:left"><p><strong>Escenario 1: Usuario crea una geocerca correctamente</strong></p><p><code> </code>Dado que el usuario está en la vista de geocercas </p><p><code> </code>Cuando seleccione el botón &quot;Crear Geocerca&quot; y dibuje un área en el mapa </p><p><code> </code>Entonces el sistema guardará la zona segura con el nombre proporcionado </p><p><strong>Escenario 2: Usuario intenta crear una geocerca sin completar información</strong> </p><p><code> </code>Dado que el usuario está creando una geocerca </p><p><code> </code>Cuando no proporcione un nombre </p><p>o no dibuje el área en el mapa </p><p><code> </code>Entonces el sistema mostrará un mensaje de error solicitando completar los campos </p></td>
+<td style="text-align:left">4</td>
+</tr>
+<tr>
+<td style="text-align:left">US17</td>
+<td style="text-align:left">Modificación de geocerca</td>
+<td style="text-align:left">Como usuario, quiero modificar la forma y el tamaño de una geocerca para ajustar la zona segura de mi mascota</td>
+<td style="text-align:left"><p><strong>Escenario 1: Usuario edita una geocerca correctamente</strong></p><p><code> </code>Dado que el usuario está visualizando su lista de geocercas</p><p><code> </code>Cuando seleccione la opción &quot;Editar&quot; y ajuste el área en el mapa  Entonces el sistema guardará los nuevos límites de la geocerca </p></td>
+<td style="text-align:left">4</td>
+</tr>
+<tr>
+<td style="text-align:left">US18</td>
+<td style="text-align:left">Eliminación de geocerca</td>
+<td style="text-align:left">Como usuario, quiero eliminar una geocerca para gestionar únicamente las zonas activas</td>
+<td style="text-align:left"><p><strong>Escenario 1: Usuario elimina una geocerca con confirmación</strong></p><p><code> </code>Dado que el usuario está en la lista de geocercas </p><p><code> </code>Cuando seleccione eliminar y confirme la acción </p><p><code> </code>Entonces el sistema eliminará la geocerca seleccionada</p></td>
+<td style="text-align:left">4</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+<th><strong>Escenario 2: Usuario cancela la</strong></th>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td><strong>eliminación</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td><code> </code>Dado que el usuario inició la</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td>eliminación de una geocerca</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td><code> </code>Cuando cancele la acción en el</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td>cuadro de confirmación</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td><code> </code>Entonces el sistema mantendrá la</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td>geocerca activa</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">US19</td>
+<td style="text-align:left">Visualización</td>
+<td style="text-align:left">Como usuario,</td>
+<td><strong>Escenario 1: Usuario visualiza las</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">4</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">de geocercas</td>
+<td style="text-align:left">quiero ver todas</td>
+<td><strong>geocercas en el mapa</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">en el mapa</td>
+<td style="text-align:left">mis geocercas en</td>
+<td><code> </code>Dado que el usuario accede a la</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">el mapa para tener</td>
+<td>sección de geocercas</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">un panorama de las</td>
+<td><code> </code>Cuando visualiza el mapa</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">zonas seguras de</td>
+<td><code> </code>Entonces el sistema mostrará las</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">mis mascotas</td>
+<td>áreas seguras creadas con</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td>diferentes colores o marcadores</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">US20</td>
+<td style="text-align:left">Configuració</td>
+<td style="text-align:left">Como usuario,</td>
+<td><strong>Escenario 1: Usuario habilita</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">4</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">n de</td>
+<td style="text-align:left">quiero configurar</td>
+<td><strong>notificaciones para una geocerca</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">notificacione</td>
+<td style="text-align:left">notificaciones para</td>
+<td><code> </code>Dado que el usuario tiene una</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">s por</td>
+<td style="text-align:left">una geocerca</td>
+<td>geocerca creada</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">geocerca</td>
+<td style="text-align:left">específica para</td>
+<td><code> </code>Cuando active la opción de</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">recibir alertas</td>
+<td>notificaciones</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">cuando mi</td>
+<td><code> </code>Entonces el sistema enviará alertas</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">mascota salga o</td>
+<td>cuando la mascota entre o salga de</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">entre de la zona</td>
+<td>la zona segura</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">segura</td>
+<td><strong>Escenario 2: Usuario deshabilita</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td><strong>notificaciones para una geocerca</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td><code> </code>Dado que el usuario no desea recibir</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td>más alertas de una zona específica</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td><code> </code>Cuando desactive la opción de</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td>notificaciones</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td><code> </code>Entonces el sistema dejará de</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td>enviar alertas relacionadas con esa</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td>geocerca</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Epic 5: Alertas y notificaciones</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Como</strong> usuario</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><code> </code><strong>Quiero</strong> recibir alertas cuando mi mascota salga o entre de una zona segura</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><code> </code><strong>Para</strong> reaccionar rápidamente ante posibles extravíos.</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">US21</td>
+<td style="text-align:left">Notificación</td>
+<td style="text-align:left">Como usuario,</td>
+<td><strong>Escenario 1: El sistema envía una</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">5</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">al salir de la</td>
+<td style="text-align:left">quiero recibir una</td>
+<td><strong>alerta al salir de la geocerca</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">geocerca</td>
+<td style="text-align:left">notificación</td>
+<td><code> </code>Dado que la mascota ha salido de la</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+<th style="text-align:left">cuando mi mascota salga de la zona segura para poder actuar rápidamente</th>
+<th><p>zona segura </p><p><code> </code>Cuando ocurra esta salida</p><p><code> </code>Entonces el sistema enviará una notificación inmediata al dispositivo del usuario </p><p><strong>Escenario 2: El sistema no envía alerta por error de geolocalización</strong>  Dado que hay una pérdida de señal </p><p>o error de GPS </p><p><code> </code>Cuando se detecte un cambio abrupto de ubicación </p><p><code> </code>Entonces el sistema validará si se trata de un error antes de enviar una alerta </p></th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">US22</td>
+<td style="text-align:left">Notificación al entrar a la geocerca</td>
+<td style="text-align:left">Como usuario, quiero recibir una notificación cuando mi mascota vuelva a ingresar a la zona segura para tener tranquilidad</td>
+<td><p><strong>Escenario 1: El sistema envía una alerta de reingreso</strong> </p><p><code> </code>Dado que la mascota estaba fuera de la zona segura </p><p><code> </code>Cuando vuelva a ingresar </p><p><code> </code>Entonces el sistema enviará una notificación indicando el retorno a la zona segura </p></td>
+<td style="text-align:left">5</td>
+</tr>
+<tr>
+<td style="text-align:left">US23</td>
+<td style="text-align:left">Configuració n de tipo de notificación</td>
+<td style="text-align:left">Como usuario, quiero configurar el tipo de notificación (push, correo, etc.) para recibir alertas en el canal que prefiera</td>
+<td><p><strong>Escenario 1: Usuario elige el tipo de notificación</strong> </p><p><code> </code>Dado que el usuario está en la configuración de notificaciones </p><p><code> </code>Cuando seleccione su canal preferido (ej. notificación push o email) </p><p><code> </code>Entonces el sistema guardará la preferencia y enviará futuras alertas por ese canal </p><p><strong>Escenario 2: Usuario selecciona múltiples canales</strong> </p><p><code> </code>Dado que el sistema permite enviar notificaciones por varios medios </p><p><code> </code>Cuando el usuario active más de un canal </p><p><code> </code>Entonces el sistema enviará la alerta por todos los canales seleccionados </p></td>
+<td style="text-align:left">5</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>US24</th>
+<th style="text-align:left">Historial de alertas recibidas</th>
+<th style="text-align:left">Como usuario, quiero ver un historial de alertas recibidas para llevar un registro de los movimientos críticos de mi mascota</th>
+<th style="text-align:left"><p><strong>Escenario 1: Usuario visualiza historial con éxito</strong> </p><p><code> </code>Dado que el usuario accede a la sección de notificaciones </p><p><code> </code>Cuando visualice el historial </p><p><code> </code>Entonces el sistema mostrará una lista de alertas con fecha, hora y tipo de evento </p><p><strong>Escenario 2: No hay alertas registradas</strong> </p><p><code> </code>Dado que la mascota no ha salido de la zona o no se han generado alertas </p><p><code> </code>Cuando el usuario acceda al historial </p><p><code> </code>Entonces el sistema informará que no hay alertas disponibles </p></th>
+<th>5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>US25</td>
+<td style="text-align:left">Desactivar notificacione s temporalmen te</td>
+<td style="text-align:left">Como usuario, quiero poder desactivar las notificaciones temporalmente para no recibir alertas en ciertos momentos</td>
+<td style="text-align:left"><p><strong>Escenario 1: Usuario desactiva alertas temporalmente</strong> </p><p><code> </code>Dado que el usuario accede a la configuración de notificaciones </p><p><code> </code>Cuando desactive la opción de alertas </p><p><code> </code>Entonces el sistema dejará de enviar notificaciones mientras esté desactivado </p><p><strong>Escenario 2: Usuario reactiva las notificaciones</strong> </p><p><code> </code>Dado que el usuario ha desactivado las notificaciones </p><p><code> </code>Cuando vuelva a activarlas </p><p><code> </code>Entonces el sistema reanudará el envío de alertas según lo configurado </p></td>
+<td>5</td>
+</tr>
+<tr>
+<td><strong>Epic 6: Plataforma y experiencia de usuario</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td><code> </code><strong>Como</strong> usuario</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td><code> </code><strong>Quiero</strong> usar la plataforma desde cualquier dispositivo y con una interfaz amigable</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Para</strong> gestionar todo fácilmente desde la web o el celular.</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td>US26</td>
+<td style="text-align:left">Crear y gestionar</td>
+<td style="text-align:left">Como usuario, quiero crear y gestionar mi perfil</td>
+<td style="text-align:left"><p><strong>Escenario 1: Usuario crea su perfil correctamente</strong> </p><p><code> </code>Dado que el usuario está en la </p></td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">perfil de usuario</th>
+<th style="text-align:left">para poder personalizar mis preferencias y gestionar mis mascotas</th>
+<th><p>sección de creación de perfil </p><p><code> </code>Cuando ingrese sus datos </p><p>personales y los confirme </p><p><code> </code>Entonces el sistema creará el perfil </p><p>y guardará la información </p><p><strong>Escenario 2: Usuario intenta crear un perfil con datos inválidos</strong> </p><p><code> </code>Dado que el usuario ingresó datos incorrectos </p><p><code> </code>Cuando intente enviar el formulario  Entonces el sistema mostrará un mensaje de error indicando qué campo necesita corrección</p><p><strong>Escenario 3: Usuario edita su perfil</strong>  Dado que el usuario ya tiene un perfil creado </p><p><code> </code>Cuando modifique alguno de sus datos </p><p><code> </code>Entonces el sistema actualizará la información y confirmará el cambio </p></th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">US27</td>
+<td style="text-align:left">Añadir una nueva mascota</td>
+<td style="text-align:left">Como usuario, quiero añadir una nueva mascota a mi perfil para poder hacer un seguimiento de su ubicación</td>
+<td><p><strong>Escenario 1: Usuario añade una mascota correctamente</strong></p><p><code> </code>Dado que el usuario está en la sección de gestión de mascotas</p><p><code> </code>Cuando ingrese los datos de la </p><p>nueva mascota (nombre, raza, edad, etc.) </p><p><code> </code>Entonces el sistema guardará la información de la mascota y la asociará al perfil </p><p><strong>Escenario 2: Usuario intenta añadir una mascota con datos</strong> </p><p><strong>incompletos</strong> </p><p><code> </code>Dado que el usuario no completó todos los campos requeridos</p><p><code> </code>Cuando intente añadir la mascota</p><p><code> </code>Entonces el sistema mostrará un mensaje indicando qué datos faltan</p></td>
+<td style="text-align:left">6</td>
+</tr>
+<tr>
+<td style="text-align:left">US28</td>
+<td style="text-align:left">Ver detalles de una mascota</td>
+<td style="text-align:left">Como usuario, quiero ver los detalles de cada</td>
+<td><p><strong>Escenario 1: Usuario visualiza los detalles de una mascota</strong></p><p><code> </code>Dado que el usuario ha añadido </p></td>
+<td style="text-align:left">6</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+<th style="text-align:left">una de mis mascotas para tener acceso rápido a su información</th>
+<th><p>varias mascotas </p><p><code> </code>Cuando seleccione una mascota desde su perfil </p><p><code> </code>Entonces el sistema mostrará toda la información relevante de esa mascota (nombre, raza, edad, estado de ubicación, etc.)</p></th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">US29</td>
+<td style="text-align:left">Eliminar una mascota</td>
+<td style="text-align:left">Como usuario, quiero eliminar una mascota de mi perfil si ya no la tengo para mantener la información actualizada</td>
+<td><p><strong>Escenario 1: Usuario elimina una mascota correctamente</strong></p><p><code> </code>Dado que el usuario ha seleccionado una mascota para eliminar </p><p><code> </code>Cuando confirme la eliminación </p><p><code> </code>Entonces el sistema eliminará la mascota de su perfil y actualizará la lista de mascotas </p><p><strong>Escenario 2: Usuario intenta eliminar una mascota sin confirmación</strong> </p><p><code> </code>Dado que el usuario ha seleccionado la opción de eliminar</p><p><code> </code>Cuando no confirme la acción de eliminación </p><p><code> </code>Entonces el sistema mantendrá la mascota en el perfil sin realizar cambios </p></td>
+<td style="text-align:left">6</td>
+</tr>
+<tr>
+<td style="text-align:left">US30</td>
+<td style="text-align:left">Asociar collar GPS a una mascota</td>
+<td style="text-align:left">Como usuario, quiero asociar un collar GPS a una de mis mascotas para poder rastrear su ubicación en tiempo real</td>
+<td><p><strong>Escenario 1: Usuario asocia un collar GPS correctamente</strong> </p><p><code> </code>Dado que el usuario ha añadido un collar GPS disponible </p><p><code> </code>Cuando seleccione la mascota a la que asignará el collar </p><p><code> </code>Entonces el sistema asociará el collar GPS con esa mascota y comenzará a rastrear su ubicación <strong>Escenario 2: Usuario intenta asociar un collar a una mascota sin collar disponible</strong> </p><p><code> </code>Dado que el usuario no tiene un collar GPS disponible </p><p><code> </code>Cuando intente asociar el collar</p><p><code> </code>Entonces el sistema mostrará un </p></td>
+<td style="text-align:left">6</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+<th>mensaje informando que no hay collares disponibles para asociar</th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<ol start="3">
+<li>Impact<a name="_page43_x69.00_y72.00"></a> Mappings**</li>
+</ol>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.014.jpeg" alt=""></p>
+<ol start="4">
+<li>Product<a name="_page44_x69.00_y72.00"></a> Backlog</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><strong>Orden</strong></th>
+<th><strong>User Story Id</strong></th>
+<th><strong>Título</strong></th>
+<th><strong>Descripción</strong></th>
+<th><strong>Story points</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>US001</td>
+<td>Ver ubicación actual</td>
+<td>Ver en un mapa la ubicación actual de cada mascota con íconos y hora.</td>
+<td>5</td>
+</tr>
+<tr>
+<td>2</td>
+<td>US002</td>
+<td>Actualización automática</td>
+<td>Mapa que se actualiza cada 10 seg. con opción de pausa y alerta por señal.</td>
+<td>8</td>
+</tr>
+<tr>
+<td>3</td>
+<td>US003</td>
+<td>Dibujar cerco virtual</td>
+<td>Crear zonas seguras en el mapa usando formas y vincularlas a mascotas.</td>
+<td>5</td>
+</tr>
+<tr>
+<td>4</td>
+<td>US004</td>
+<td>Editar/eliminar cercos</td>
+<td><p>Ver, modificar o borrar cercos </p><p>en lista o mapa </p></td>
+<td>5</td>
+</tr>
+<tr>
+<td>5</td>
+<td>US016</td>
+<td>Creación de geocerca</td>
+<td>Crear una geocerca dibujando un área en el mapa para delimitar la zona segura de la mascota</td>
+<td>5</td>
+</tr>
+<tr>
+<td>6</td>
+<td>US017</td>
+<td>Modificación de geocerca</td>
+<td>Modificar la forma y el tamaño de una geocerca para ajustar la zona segura de la mascota</td>
+<td>3</td>
+</tr>
+<tr>
+<td>7</td>
+<td>US018</td>
+<td>Eliminación de geocerca</td>
+<td>Eliminar una geocerca para gestionar</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+<th style="text-align:left">únicamente las zonas activas</th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">US019</td>
+<td style="text-align:left">Visualización de geocercas en el mapa</td>
+<td style="text-align:left">Ver todas las geocercas en el mapa para tener un panorama de las zonas seguras</td>
+<td style="text-align:left">3</td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">US020</td>
+<td style="text-align:left">Configuración de notificaciones por geocerca</td>
+<td style="text-align:left">Configurar notificaciones para una geocerca específica para recibir alertas de entrada/salida</td>
+<td style="text-align:left">5</td>
+</tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">US021</td>
+<td style="text-align:left">Notificación al salir de la geocerca</td>
+<td style="text-align:left">Recibir una notificación cuando la mascota salga de la zona segura</td>
+<td style="text-align:left">8</td>
+</tr>
+<tr>
+<td style="text-align:left">11</td>
+<td style="text-align:left">US022</td>
+<td style="text-align:left">Notificación al entrar a la geocerca</td>
+<td style="text-align:left">Recibir una notificación cuando la mascota vuelva a ingresar a la zona segura</td>
+<td style="text-align:left">5</td>
+</tr>
+<tr>
+<td style="text-align:left">12</td>
+<td style="text-align:left">US023</td>
+<td style="text-align:left">Configuración de tipo de notificación</td>
+<td style="text-align:left">Configurar el tipo de notificación (push, correo, etc.) para recibir alertas en el canal preferido</td>
+<td style="text-align:left">5</td>
+</tr>
+<tr>
+<td style="text-align:left">13</td>
+<td style="text-align:left">US024</td>
+<td style="text-align:left">Historial de alertas recibidas</td>
+<td style="text-align:left">Ver un historial de alertas recibidas para llevar un registro de los movimientos</td>
+<td style="text-align:left">8</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+<th style="text-align:left">críticos de la mascota</th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">14</td>
+<td style="text-align:left">US025</td>
+<td style="text-align:left">Desactivar notificaciones temporalmente</td>
+<td style="text-align:left">Poder desactivar las notificaciones temporalmente para no recibir alertas en ciertos momentos</td>
+<td style="text-align:left">3</td>
+</tr>
+<tr>
+<td style="text-align:left">15</td>
+<td style="text-align:left">US026</td>
+<td style="text-align:left">Crear y gestionar perfil de usuario</td>
+<td style="text-align:left">Crear y gestionar el perfil para personalizar preferencias y gestionar mascotas</td>
+<td style="text-align:left">8</td>
+</tr>
+<tr>
+<td style="text-align:left">16</td>
+<td style="text-align:left">US027</td>
+<td style="text-align:left">Añadir una nueva mascota</td>
+<td style="text-align:left">Añadir una nueva mascota al perfil para hacer seguimiento de su ubicación</td>
+<td style="text-align:left">5</td>
+</tr>
+<tr>
+<td style="text-align:left">17</td>
+<td style="text-align:left">US028</td>
+<td style="text-align:left">Ver detalles de una mascota</td>
+<td style="text-align:left">Ver los detalles de cada mascota para tener acceso rápido a su información</td>
+<td style="text-align:left">3</td>
+</tr>
+<tr>
+<td style="text-align:left">18</td>
+<td style="text-align:left">US029</td>
+<td style="text-align:left">Eliminar una mascota</td>
+<td style="text-align:left">Eliminar una mascota del perfil si ya no se tiene para mantener la información actualizada</td>
+<td style="text-align:left">2</td>
+</tr>
+</tbody>
+</table>
+<p><a name="_page48_x69.00_y72.00"></a>Capitulo IV:Strategic-Level Software Design</p>
+<ol>
+<li>Strategic-Level<a name="_page48_x69.00_y95.00"></a> Attribute-Driven Design</li>
+</ol>
+<p>En el desarrollo del proyecto Family Solutions se aplicó Domain-Driven Design (DDD) a nivel estratégico para organizar el dominio complejo de la solución &quot;CollarLink&quot;. Se identificaron y delimitaron Bounded Contexts claros que representan partes fundamentales del sistema: Usuario, Mascota y Geocerca.</p>
+<p><a name="_page48_x69.00_y237.00"></a>4.1.1 EventStormingz</p>
+<p>Como parte del proceso de modelado estratégico del dominio para el proyecto Family Solutions - CollarLink, se llevó a cabo una sesión de EventStorming con el objetivo de realizar una primera aproximación al modelado general del sistema, buscando identificar eventos clave, procesos críticos, entidades relevantes y posibles candidatos a Bounded Contexts.</p>
+<p>Durante la sesión de EventStorming se realizaron las siguientes actividades:</p>
+<ol>
+<li><strong>Identificación de Eventos de Dominio</strong></li>
+</ol>
+<p>Se identificaron los principales <strong>eventos de negocio</strong> que ocurren dentro del sistema, escribiéndolos en <strong>verbo pasado</strong> para reflejar hechos ya sucedidos.</p>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.015.jpeg" alt=""></p>
+<ol start="2">
+<li><strong>Organización en Línea de Tiempo</strong></li>
+</ol>
+<p>Los eventos fueron organizados de <strong>izquierda a derecha</strong>, simulando el <strong>orden cronológico</strong> de uso de la aplicación:</p>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.016.jpeg" alt=""></p>
+<ol start="4">
+<li><strong>Detección de Entidades</strong></li>
+</ol>
+<p>Se reconocieron las entidades principales del dominio, esenciales para sostener la lógica del sistema:</p>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.017.jpeg" alt=""></p>
+<ol start="5">
+<li><strong>Identificación de Policies (Reglas de Negocio)</strong></li>
+</ol>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.018.png" alt=""></p>
+<p><strong>Resultados</strong></p>
+<p>Gracias al EventStorming, se logró:</p>
+<ul>
+<li>Identificar claramente los principales eventos de negocio.</li>
+<li>Visualizar los flujos de interacción del sistema de manera secuencial.</li>
+<li>Reconocer candidatos a <strong>Bounded Contexts</strong>:</li>
+<li><strong>Gestión de usuario</strong></li>
+<li><strong>Interfaz de Usuario</strong></li>
+<li><strong>Geolocalización y Monitoreo</strong></li>
+<li>Detectar reglas de negocio críticas para la operación del sistema.</li>
+</ul>
+<p>Link: <a href="https://miro.com/welcomeonboard/Q1JUVzJ4SERrdmZOeHp5UzBpdVhjeldTb3FVL1hQY1VzeHR5YTVwTGdidURoQ2hkM1luZXNUWE0vbFIrSi9GSVllcnhUQVZxQ3RERzZXTkN2T2VJSTNCQ3NCRTFFNld6UlN3dWR1Um5IZDNsellmNXB5Uld5V01qaDZQUWJGVzdnbHpza3F6REdEcmNpNEFOMmJXWXBBPT0hdjE=?share_link_id=693455935149">https://miro.com/welcomeonboard/Q1JUVzJ4SERrdmZOeHp5UzBpdVhjeldTb3FVL1hQY1Vz eHR5YTVwTGdidURoQ2hkM1luZXNUWE0vbFIrSi9GSVllcnhUQVZxQ3RERzZXTkN2T2V JSTNCQ3NCRTFFNld6UlN3dWR1Um5IZDNsellmNXB5Uld5V01qaDZQUWJGVzdnbHpza3 F6REdEcmNpNEFOMmJXWXBBPT0hdjE=?share_link_id=693455935149 </a></p>
+<ol>
+<li>Candidate<a name="_page50_x69.00_y572.00"></a> Context Discovery.</li>
+</ol>
+<p>Posterior a la sesión de EventStorming, se llevó a cabo una sesión de Candidate Context Discovery con el objetivo de identificar los límites naturales (Bounded Contexts) dentro del dominio de la solución CollarLink. El análisis se enfocó en agrupar eventos y comandos relacionados</p>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.019.jpeg" alt=""></p>
+<ol start="2">
+<li>Domain<a name="_page51_x69.00_y464.00"></a> Message Flows Modeling.</li>
+</ol>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.020.jpeg" alt=""></p>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.021.jpeg" alt=""></p>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.022.jpeg" alt=""></p>
+<ol start="3">
+<li>Bounded<a name="_page53_x69.00_y642.00"></a> Context Canvases.</li>
+</ol>
+<p>- -</p>
+<p>-Bounded Context UI:</p>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.023.jpeg" alt=""></p>
+<ol start="2">
+<li>Context<a name="_page54_x69.00_y382.00"></a> Mapping</li>
+</ol>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.024.jpeg" alt=""></p>
+<ol start="2">
+<li>Tactical-Level<a name="_page55_x69.00_y448.00"></a> Domain-Driven Design</li>
+<li>Bounded<a name="_page55_x69.00_y497.00"></a> Context: Geolocalización y Monitoreo</li>
+</ol>
+<p>Este bounded context se encarga de todo lo relacionado con el rastreo en tiempo real de la mascota y la lógica de geocercas.</p>
+<ol>
+<li>Domain Layer</li>
+</ol>
+<p><strong>Entidades:</strong></p>
+<ul>
+<li><strong>PetLocation</strong> (ubicación de la mascota)</li>
+<li><strong>GeoFence</strong> (geocerca)</li>
+</ul>
+<p><strong>Value Objects:</strong></p>
+<ul>
+<li><strong>Coordinates</strong> (latitud, longitud)</li>
+<li><strong>Timestamp</strong></li>
+</ul>
+<p><strong>Agregado raíz:</strong></p>
+<ul>
+<li><strong>TrackingSession</strong> → Coordina PetLocation + GeoFence</li>
+</ul>
+<p><strong>Reglas de negocio:</strong></p>
+<ul>
+<li>Determinar si una ubicación está dentro o fuera de una geocerca.</li>
+</ul>
+<ol start="2">
+<li>Interface Layer</li>
+</ol>
+<p><strong>Interfaces:</strong></p>
+<ul>
+<li><strong>API HTTP</strong> (ej: POST /tracking/location)</li>
+<li><strong>WebSocket Server</strong> (para actualizaciones en tiempo real en la app)</li>
+<li><strong>Admin Panel Interface</strong></li>
+</ul>
+<ol start="3">
+<li>Application Layer</li>
+</ol>
+<p><strong>Casos de Uso principales:</strong></p>
+<ul>
+<li><strong>ReceiveLocationUseCase</strong> (recibe nueva ubicación del collar)</li>
+<li><strong>CheckGeoFenceViolationUseCase</strong> (verifica si la mascota salió de la zona segura)</li>
+<li><strong>TriggerAlertUseCase</strong> (dispara alerta si hay violación)</li>
+<li><strong>SaveLocationHistoryUseCase</strong> (guarda ubicación en el historial)</li>
+</ul>
+<p><strong>Interfaces (Ports):</strong></p>
+<ul>
+<li><strong>LocationRepository</strong> (para guardar historial)</li>
+<li><strong>NotificationService</strong> (para mandar notificaciones)</li>
+<li><strong>GeoFenceService</strong> (validaciones avanzadas si la geocerca es dinámica)</li>
+</ul>
+<ol start="4">
+<li>Infrastructure Layer</li>
+</ol>
+<p><strong>Infraestructura concreta:</strong></p>
+<ul>
+<li><strong>LocationRepositoryImpl</strong> → Guarda datos en MongoDB, DynamoDB, etc.</li>
+<li><strong>NotificationServiceImpl</strong> → Usa Firebase Cloud Messaging (FCM), Twilio, Email API.</li>
+<li><strong>DeviceMessageBroker</strong> → Cliente MQTT (Eclipse Mosquitto, AWS IoT, etc.)</li>
+<li><strong>Persistence Layer</strong> → ORM / NoSQL clients</li>
+</ul>
+<ol start="5">
+<li>Bounded Context Software Architecture Component Level Diagrams</li>
+</ol>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.025.jpeg" alt=""></p>
+<ol start="6">
+<li>Bounded Context Software Architecture Code Level Diagrams</li>
+</ol>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.026.jpeg" alt=""></p>
+<p>4.2.1.6.1 Bounded Context Domain Layer Class Diagrams</p>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.027.jpeg" alt=""></p>
+<ol start="2">
+<li>Bounded<a name="_page59_x69.00_y72.00"></a> Context: Gestión de Usuario y Mascotas</li>
+</ol>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.028.jpeg" alt=""></p>
+<ol>
+<li><em>Domain Layer</em></li>
+</ol>
+<p>User: Entidad con datos y lógica de negocio de usuarios.</p>
+<p>Pet: Entidad con comportamiento relacionado a la mascota. Geofence: Valor-objeto o entidad con reglas para definir zonas. Device: Entidad para representar el collar GPS.</p>
+<ol start="2">
+<li><em>Interface Layer</em></li>
+</ol>
+<p>Web App: Permite que el usuario administre su cuenta y mascotas desde un navegador.</p>
+<p>Mobile App: Permite que el usuario observe la ubicación de su mascota y configurar geocercas desde su celular/</p>
+<p>Login/Registro UI: Formulario para crear cuenta o iniciar sesión.</p>
+<p>Mapa Geocercas: Interfaz visual para que el usuario dibuje zonas de seguridad en el mapa.</p>
+<ol start="3">
+<li><em>Application Layer</em></li>
+</ol>
+<p>UserService: Coordina el registro, login y edición de usuarios</p>
+<p>PetService: Maneja el CRUD de mascotas.</p>
+<p>GeofenceService: Procesa y guarda las configuraciones de geocercas. DeviceAssignmetnService: Gestiona la asignación de collares a mascotas.</p>
+<ol start="4">
+<li><em>Infrastructure Layer</em></li>
+</ol>
+<p>Database: Persistencia de usuarios, mascotas, geocercas y dispositivos.</p>
+<p>Auth Provider: Autenticación y autorización.</p>
+<p>Map Api: Para mostrar el mapa y permitir configuración de geocercas. Device Cominucation Adapter: Canal para comunicar con los collares.</p>
+<ol start="5">
+<li><em>Bounded Context Software Architecture Component Level Diagrams</em></li>
+</ol>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.029.jpeg" alt=""></p>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.030.jpeg" alt=""></p>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.031.jpeg" alt=""></p>
+<ol start="6">
+<li><em>Bounded Context Software Architecture Code Level Diagrams</em></li>
+</ol>
+<p>4.2.2.6.1 Bounded Context Domain Layer Class Diagrams</p>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.032.png" alt=""></p>
+<p>4.2.2.6.1 Bounded Context Database Design Diagram</p>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.033.png" alt=""></p>
+<ol start="3">
+<li>Bounded<a name="_page64_x69.00_y98.00"></a> Context User Interface (UI)</li>
+<li>Domain Layer</li>
+</ol>
+<p>Las entidades y conceptos centrales que representan los elementos visuales y de interacción con los cuales los usuarios interactúan, independientemente de su implementación técnica.</p>
+<p><strong>Entidades principales:</strong></p>
+<ul>
+<li><strong>UIScreen</strong>: Representa una pantalla completa de la interfaz.</li>
+<li><strong>UIComponent</strong>: Componentes reutilizables que conforman las pantallas.</li>
+<li><strong>UIState</strong>: Estado actual de la interfaz y sus componentes.</li>
+<li><strong>NavigationPath</strong>: Rutas y flujos de navegación entre pantallas.</li>
+<li><strong>UITheme</strong>: Definición de estilos, colores y elementos visuales consistentes.</li>
+<li><strong>UserInteraction</strong>: Eventos y acciones realizadas por el usuario.</li>
+<li><strong>NotificationDisplay</strong>: Representación visual de alertas y notificaciones.</li>
+</ul>
+<p><strong>Value Objects:</strong></p>
+<ul>
+<li><strong>ScreenIdentifier</strong>: Identificador único para cada pantalla.</li>
+<li><strong>LayoutProperties</strong>: Propiedades de posicionamiento y estilo.</li>
+<li><strong>InteractionType</strong>: Tipo de interacción (tap, swipe, long press).</li>
+<li><strong>NotificationPriority</strong>: Nivel de importancia de las notificaciones.</li>
+<li><strong>ThemeColor</strong>: Colores definidos para el tema de la aplicación.</li>
+</ul>
+<p><strong>Servicios del dominio:</strong></p>
+<ul>
+<li><strong>UIStateManager</strong>: Gestiona los cambios de estado en la interfaz.</li>
+<li><strong>NavigationService</strong>: Controla la navegación entre pantallas.</li>
+<li><strong>NotificationDisplayService</strong>: Gestiona la visualización de alertas.</li>
+<li><strong>UserInteractionHandler</strong>: Procesa las interacciones del usuario.</li>
+<li><strong>ThemeService</strong>: Aplica y gestiona los temas visuales.</li>
+</ul>
+<ol start="2">
+<li>Interface Layer</li>
+</ol>
+<p>La Interface Layer actúa como intermediario entre los usuarios y el sistema, definiendo cómo se presenta la información y cómo se capturan las interacciones del usuario.</p>
+<p><strong>APIs y endpoints:</strong></p>
+<ul>
+<li><strong>UIStateAPI</strong>: Para consultas sobre el estado actual de la interfaz.</li>
+<li><strong>NavigationAPI</strong>: Controla la navegación programática entre pantallas.</li>
+<li><strong>NotificationAPI</strong>: Para mostrar y gestionar notificaciones en la UI.</li>
+<li><strong>UserPreferencesAPI</strong>: Gestiona preferencias de visualización.</li>
+</ul>
+<p><strong>UI Controllers:</strong></p>
+<ul>
+<li><strong>HomeScreenController</strong>: Gestiona la pantalla principal.</li>
+<li><strong>PetTrackingController</strong>: Controla la visualización del mapa y ubicación.</li>
+<li><strong>GeofenceController</strong>: Maneja la configuración visual de geocercas.</li>
+<li><strong>ProfileController</strong>: Gestiona la pantalla de perfil y ajustes.</li>
+<li><strong>NotificationController</strong>: Controla la visualización de alertas.</li>
+<li><strong>HistoryController</strong>: Gestiona la visualización del historial de ubicaciones.</li>
+</ul>
+<p><strong>DTOs (Data Transfer Objects):</strong></p>
+<ul>
+<li><strong>PetLocationDTO</strong>: Datos de ubicación formateados para UI.</li>
+<li><strong>UserPreferencesDTO</strong>: Configuraciones del usuario para la interfaz.</li>
+<li><strong>GeofenceConfigurationDTO</strong>: Representación visual de geocercas.</li>
+<li><strong>NotificationDTO</strong>: Estructura de datos para notificaciones visuales.</li>
+<li><strong>HistoricalRouteDTO</strong>: Datos de rutas históricas para visualización.</li>
+</ul>
+<ol start="3">
+<li>Application Layer</li>
+</ol>
+<p>La Application Layer orquesta los casos de uso relacionados con la interfaz de usuario y coordina la comunicación entre el dominio y la infraestructura.</p>
+<p><strong>Casos de Uso:</strong></p>
+<ul>
+<li><strong>DisplayPetLocationUseCase</strong>: Muestra la ubicación actual de la mascota en el mapa.</li>
+<li><strong>ConfigureGeofenceUseCase</strong>: Permite configurar visualmente las geocercas.</li>
+<li><strong>DisplayNotificationUseCase</strong>: Muestra notificaciones según su prioridad.</li>
+<li><strong>NavigateToScreenUseCase</strong>: Gestiona la navegación entre pantallas.</li>
+<li><strong>ViewPetHistoryUseCase</strong>: Visualiza el historial de ubicación de la mascota.</li>
+<li><strong>UpdateUserPreferencesUseCase</strong>: Actualiza las preferencias visuales del usuario.</li>
+<li><strong>DisplayDashboardUseCase</strong>: Muestra el dashboard principal con información relevante.</li>
+</ul>
+<p>Application Services:</p>
+<ul>
+<li><strong>UIStateApplicationService</strong>: Gestiona el estado general de la UI.</li>
+<li><strong>NavigationApplicationService</strong>: Coordina la navegación dentro de la aplicación.</li>
+<li><strong>NotificationApplicationService</strong>: Orquesta la visualización de notificaciones.</li>
+<li><strong>MappingApplicationService</strong>: Gestiona la visualización de mapas y ubicaciones.</li>
+<li><strong>ThemeApplicationService</strong>: Aplica temas y estilos visuales.</li>
+</ul>
+<p>Event Handlers:</p>
+<ul>
+<li><strong>PetLocationUpdatedEventHandler</strong>: Actualiza la UI cuando cambia la ubicación.</li>
+<li><strong>GeofenceViolationEventHandler</strong>: Gestiona eventos visuales de violación de geocerca.</li>
+<li><strong>UserPreferencesChangedEventHandler</strong>: Actualiza la UI cuando cambian las preferencias.</li>
+<li><strong>SystemNotificationEventHandler</strong>: Maneja la visualización de notificaciones del sistema.</li>
+</ul>
+<ol start="4">
+<li>Infrastructure Layer</li>
+</ol>
+<p>La Infrastructure Layer provee implementaciones concretas de servicios y herramientas necesarias para la interfaz de usuario.</p>
+<p><strong>Frameworks y Tecnologías:</strong></p>
+<ul>
+<li><strong>Flutter</strong>: Framework para desarrollo de aplicaciones móviles multiplataforma.</li>
+<li><strong>MapBox/GoogleMaps</strong>: Para visualización de mapas.</li>
+</ul>
+<p><strong>Adapters:</strong></p>
+<ul>
+<li><strong>RESTApiAdapter</strong>: Implementa comunicación con API REST.</li>
+<li><strong>LocalStorageAdapter</strong>: Para almacenamiento local de preferencias.</li>
+<li><strong>PushNotificationAdapter</strong>: Para gestión de notificaciones push.</li>
+<li><strong>MapServiceAdapter</strong>: Adapta servicios de mapas externos.</li>
+</ul>
+<p><strong>Repositorios:</strong></p>
+<ul>
+<li><strong>UIStateRepository</strong>: Implementación para persistencia del estado de UI.</li>
+<li><strong>UserPreferencesRepository</strong>: Almacena preferencias visuales del usuario.</li>
+<li><strong>NotificationHistoryRepository</strong>: Almacena historial de notificaciones mostradas.</li>
+<li><strong>CachedLocationRepository</strong>: Almacena temporalmente datos de ubicación para UI.</li>
+</ul>
+<ol start="5">
+<li>Bounded Context Software Architecture Component Level Diagrams</li>
+</ol>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.034.jpeg" alt=""></p>
+<ol start="6">
+<li>Bounded Context Software Architecture Code Level Diagrams</li>
+<li>Bounded Context Domain Layer Class Diagrams</li>
+</ol>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.035.jpeg" alt=""></p>
+<ol start="2">
+<li>Bounded Context Database Design Diagram</li>
+</ol>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.036.jpeg" alt=""></p>
+<ol start="3">
+<li>Software<a name="_page70_x69.00_y96.00"></a> Architecture**</li>
+<li>Software<a name="_page70_x69.00_y121.00"></a> Architecture System Landscape Diagram</li>
+</ol>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.037.jpeg" alt="ref3"></p>
+<ol start="2">
+<li>Software<a name="_page70_x69.00_y383.00"></a> Architecture Context Level Diagrams**</li>
+</ol>
+<p>Incluye principalmente un tipo de usuario:</p>
+<ul>
+<li><strong>Usuarios (Personas):</strong></li>
+</ul>
+<p><code> </code>Dueños de mascotas que utilizan la plataforma <strong>CollarLink</strong> para monitorear en tiempo real la ubicación de sus mascotas, establecer geocercas de seguridad y recibir alertas cuando sus mascotas salen de las zonas seguras definidas.• <strong>IoT Device:</strong></p>
+<p><code> </code>Dispositivo de rastreo GPS conectado que envía la ubicación actual de la mascota al sistema CollarLink en tiempo real. Es fundamental para el monitoreo continuo y preciso del posicionamiento del animal.</p>
+<ul>
+<li><strong>Google Maps:</strong></li>
+</ul>
+<p><code> </code>Servicio utilizado para visualizar la ubicación de la mascota en el mapa, definir geocercas y calcular rutas. Facilita la interacción intuitiva del usuario con la información de ubicación.</p>
+<ul>
+<li><strong>CollarLink (Software System):</strong></li>
+</ul>
+<p><code> </code>Sistema central que gestiona la comunicación entre los dispositivos IoT, la plataforma de mapas y los usuarios. CollarLink procesa la información de localización, administra las alertas de geocercas y proporciona interfaces amigables para el usuario a través de aplicaciones web y móviles.</p>
+<p><strong>Descripcion General de funcionamiento</strong></p>
+<p>El <strong>Usuario</strong> interactúa con <strong>CollarLink</strong> para registrar su mascota, configurar zonas seguras y visualizar su ubicación en tiempo real.</p>
+<p><code> </code>El <strong>IoT Device</strong> transmite continuamente datos de ubicación al sistema, mientras que <strong>Google Maps</strong> permite visualizar esta información de forma geográfica. <strong>CollarLink</strong> actúa como el intermediario inteligente que conecta todos los componentes y gestiona la lógica del negocio para ofrecer una experiencia segura y eficiente.</p>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.037.jpeg" alt="ref3"></p>
+<ol start="3">
+<li>Software<a name="_page72_x69.00_y72.00"></a> Architecture Container Level Diagrams**</li>
+</ol>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.038.jpeg" alt=""></p>
+<ul>
+<li><strong>Landing Page, Web Application y Mobile Application:</strong></li>
+</ul>
+<p>Estos contenedores, desarrollados utilizando frameworks modernos (como Angular y tecnologías móviles híbridas o nativas), permiten a los usuarios interactuar con el sistema.</p>
+<ul>
+<li><strong>Landing Page:</strong> Funciona como una página principal de presentación y captación de usuarios.</li>
+<li><strong>Web Application:</strong> Plataforma principal para que los usuarios gestionen la configuración de sus dispositivos y geocercas.</li>
+<li><strong>Mobile Application:</strong> Versión optimizada para dispositivos móviles, que ofrece funcionalidades similares a la Web Application, además de notificaciones en tiempo real sobre el estado del dispositivo IoT.</li>
+<li><strong>RestAPI:</strong></li>
+</ul>
+<p>Contenedor que centraliza todas las comunicaciones entre frontend, backend, servicios externos y dispositivos IoT. Maneja solicitudes HTTP/S y respuestas en formato JSON, asegurando la modularidad, seguridad y escalabilidad de la arquitectura.</p>
+<ul>
+<li><strong>MySQL:</strong></li>
+</ul>
+<p>Base de datos relacional utilizada para almacenar información persistente como registros de usuarios, configuraciones de dispositivos, historial de ubicaciones y datos de geocercas. Elegida por su robustez, rendimiento y amplio soporte.</p>
+<ul>
+<li><strong>Google Maps:</strong></li>
+</ul>
+<p><code> </code>Servicio externo utilizado para la visualización de ubicaciones en el mapa, cálculo de rutas y establecimiento de geocercas geográficas.</p>
+<ul>
+<li><strong>IoT Device:</strong></li>
+</ul>
+<p>Dispositivo GPS integrado que comunica su ubicación al backend a través de la RestAPI. Permite monitorear en tiempo real el estado y la ubicación de la mascota asociada.</p>
+<ul>
+<li><strong>Usuario:</strong></li>
+</ul>
+<p><code> </code>Persona que interactúa con las distintas aplicaciones para registrar su mascota, configurar áreas seguras y recibir alertas.</p>
+<p><strong>Comunicaciones entre contenedores</strong></p>
+<p>Las comunicaciones entre los diferentes módulos se realizan mediante <strong>llamadas API RESTful</strong> sobre <strong>HTTP/S</strong>, utilizando <strong>JSON</strong> como formato de intercambio de datos.</p>
+<p><code> </code>La <strong>Mobile Application</strong> y <strong>Web Application</strong> envían solicitudes a través de la <strong>RestAPI</strong>, que a su vez interactúa tanto con la <strong>base de datos MySQL</strong> como con los servicios de <strong>Google Maps</strong> y los <strong>dispositivos IoT</strong>.</p>
+<ol start="4">
+<li>Software<a name="_page73_x69.00_y392.00"></a> Architecture Deployment Diagrams</li>
+</ol>
+<p><img src="file:///Users/joaquincarbajal/Documents/Universidad/Ciclo 6/Aplicaciones para Dispositivos Móviles/Proyecto/Report/assets/Aspose.Words.91571c15-48ba-486b-bfca-e6acdd96cdca.039.jpeg" alt=""></p>
+<p><a name="_page74_x69.00_y72.00"></a>Conclusiones</p>
+<p><strong>TB1:</strong> Con el reporte y los 4 capítulos terminados, hemos podido concluir que elaborar un proyecto de IoT desde cero es un gran esfuerzo colaborativo y sólo se puede desarrollar de forma correcta si todos los integrantes participan y se comunican correctamente.</p>
+<p><a name="_page74_x69.00_y157.00"></a>Referencias Bibliográficas Anexos
+1ASI0572 – Family Solutions - Pág.</p>
+<p><a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u201916837_upc_edu_pe/EWk7LDfbFRRLl5H9jVXoo60BfY6J9Q1aahgE5cGxNxQbVg?e=I3JcP3&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D">Video de Exposición: https://upcedupe-my.sharepoint.com/<img class="emoji" alt="v" src="data:image/png;base64,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" />/g/personal/u201916837_upc_edu_pe/EWk7LDfbFRRLl5H9jVXoo60BfY6J9Q1aahgE5cGxNxQbVg?e=I3JcP3&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D</a></p>
+
+</body>
+</html>
