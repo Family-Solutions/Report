@@ -4,7 +4,7 @@
 
 8vo Ciclo 
 
-**Desarrollo de Soluciones IOT** Sección: 2941 
+**Desarrollo de Soluciones IOT** Sección: 2941
 
 Profesor: Marco Antonio Leon Baca “INFORME DEL TRABAJO FINAL” Startup: Family Solutions 
 
@@ -36,60 +36,55 @@ A continuación se detalla los avances y las correcciones relevantes durante el 
 
 <a name="_page3_x69.00_y72.00"></a>Contenido 
 
-Contenido 
+# Contenido
 
-[Registro de Versiones ................................................................................................... 2 ](#_page1_x69.00_y72.00)[Project Report Collaboration Insights ............................................................................ 3 ](#_page2_x69.00_y72.00)[Contenido ................................................................................................................... 4 ](#_page3_x69.00_y72.00)[Student Outcome ......................................................................................................... 5 ](#_page4_x69.00_y535.00)[Capítulo I: Introducción ................................................................................................ 8 ](#_page7_x69.00_y72.00)
-
-1. [Startup Profile ........................................................................................................ 8 ](#_page7_x69.00_y106.00)
-1. [Descripción de la Startup ..................................................................................... 8 ](#_page7_x69.00_y139.00)
-
-   2. [Perfiles de integrantes del equipo ................................................................... 9 ](#_page8_x69.00_y278.00)
-2. [Solution Profile .................................................................................................. 11 ](#_page10_x69.00_y72.00)
-
-   [1.2.2 Antecedentes y problemática....................................................................... 11 ](#_page10_x69.00_y97.00)
-
-3. [Segmentos objetivo ........................................................................................... 17 ](#_page16_x69.00_y72.00)[Capítulo II: Requirements & Analysis ........................................................................... 18 ](#_page17_x69.00_y72.00)
-1. [Competidores ................................................................................................... 18 ](#_page17_x69.00_y102.00)
-1. [Entrevistas ........................................................................................................ 20 ](#_page19_x69.00_y295.00)
-1. [Diseño de entrevistas ..................................................................................... 20 ](#_page19_x69.00_y319.00)
-1. [Registro de entrevistas .................................................................................... 22 ](#_page21_x69.00_y96.00)
-1. [Análisis de entrevistas .................................................................................... 23 ](#_page22_x69.00_y455.00)
-3. [Needfinding ...................................................................................................... 24 ](#_page23_x69.00_y72.00)
-1. [User Personas ............................................................................................ 24 ](#_page23_x69.00_y97.00)
-1. [User Task Matrix .......................................................................................... 24 ](#_page23_x69.00_y660.00)
-1. [User Journey Mapping.................................................................................. 27 ](#_page26_x69.00_y72.00)
-1. [Empathy Mapping ....................................................................................... 28 ](#_page27_x69.00_y98.00)
-1. [As-is Scenario Mapping ............................................................................... 29 ](#_page28_x69.00_y72.00)
-4. [Ubiquitous Language ..................................................................................... 29 ](#_page28_x69.00_y259.00)
-
-[Capítulo III: Requirements Specification ...................................................................... 30 ](#_page29_x69.00_y72.00)
-
-1. [To-Be Scenario Mapping .................................................................................... 30 ](#_page29_x69.00_y102.00)
-2. [User Stories ...................................................................................................... 31 ](#_page30_x69.00_y72.00)
-2. [Impact Mappings ............................................................................................... 44 ](#_page43_x69.00_y72.00)
-2. [Product Backlog ................................................................................................ 45 ](#_page44_x69.00_y72.00)
-
-[Capitulo IV: Strategic-Level Software Design ................................................................ 49 ](#_page48_x69.00_y72.00)
-
-1. [Strategic-Level Attribute-Driven Design ............................................................... 49 ](#_page48_x69.00_y95.00)
-
-   [4.1.1 EventStormingz ........................................................................................... 49 ](#_page48_x69.00_y237.00)
-
-1. [Candidate Context Discovery. ................................................................... 51 ](#_page50_x69.00_y572.00)
-1. [Domain Message Flows Modeling. ............................................................. 52 ](#_page51_x69.00_y464.00)
-1. [Bounded Context Canvases. ..................................................................... 54 ](#_page53_x69.00_y642.00)
-2. [Context Mapping ............................................................................................ 55 ](#_page54_x69.00_y382.00)
-2. [Tactical-Level Domain-Driven Design.................................................................. 56 ](#_page55_x69.00_y448.00)
-1. [Bounded Context: Geolocalización y Monitoreo ............................................ 56 ](#_page55_x69.00_y497.00)
-1. [Bounded Context: Gestión de Usuario y Mascotas ......................................... 60 ](#_page59_x69.00_y72.00)
-1. [Bounded Context User Interface (UI)............................................................. 65 ](#_page64_x69.00_y98.00)
-3. [Software Architecture ........................................................................................ 71 ](#_page70_x69.00_y96.00)
-1. [Software Architecture System Landscape Diagram ........................................ 71 ](#_page70_x69.00_y121.00)
-1. [Software Architecture Context Level Diagrams .............................................. 71 ](#_page70_x69.00_y383.00)
-1. [Software Architecture Container Level Diagrams ........................................... 73 ](#_page72_x69.00_y72.00)
-1. [Software Architecture Deployment Diagrams ................................................ 74 ](#_page73_x69.00_y392.00)
-
-[Conclusiones ............................................................................................................ 75 ](#_page74_x69.00_y72.00)[Referencias BibliográficasAnexos ................................................................................ 75 ](#_page74_x69.00_y157.00)
+* [Registro de Versiones](#_page1_x69.00_y72.00)
+* [Project Report Collaboration Insights](#_page2_x69.00_y72.00)
+* [Contenido](#_page3_x69.00_y72.00)
+* [Student Outcome](#_page4_x69.00_y535.00)
+* [**Capítulo I: Introducción**](#_page7_x69.00_y72.00)
+    * [1. Startup Profile](#_page7_x69.00_y106.00)
+        * [1.1 Descripción de la Startup](#_page7_x69.00_y139.00)
+        * [1.2 Perfiles de integrantes del equipo](#_page8_x69.00_y278.00)
+    * [2. Solution Profile](#_page10_x69.00_y72.00)
+        * [1.2.2 Antecedentes y problemática](#_page10_x69.00_y97.00)
+    * [3. Segmentos objetivo](#_page16_x69.00_y72.00)
+* [**Capítulo II: Requirements & Analysis**](#_page17_x69.00_y72.00)
+    * [1. Competidores](#_page17_x69.00_y102.00)
+    * [2. Entrevistas](#_page19_x69.00_y295.00)
+        * [2.1 Diseño de entrevistas](#_page19_x69.00_y319.00)
+        * [2.2 Registro de entrevistas](#_page21_x69.00_y96.00)
+        * [2.3 Análisis de entrevistas](#_page22_x69.00_y455.00)
+    * [3. Needfinding](#_page23_x69.00_y72.00)
+        * [3.1 User Personas](#_page23_x69.00_y97.00)
+        * [3.2 User Task Matrix](#_page23_x69.00_y660.00)
+        * [3.3 User Journey Mapping](#_page26_x69.00_y72.00)
+        * [3.4 Empathy Mapping](#_page27_x69.00_y98.00)
+        * [3.5 As-is Scenario Mapping](#_page28_x69.00_y72.00)
+    * [4. Ubiquitous Language](#_page28_x69.00_y259.00)
+* [**Capítulo III: Requirements Specification**](#_page29_x69.00_y72.00)
+    * [1. To-Be Scenario Mapping](#_page29_x69.00_y102.00)
+    * [2. User Stories](#_page30_x69.00_y72.00)
+    * [3. Impact Mappings](#_page43_x69.00_y72.00)
+    * [4. Product Backlog](#_page44_x69.00_y72.00)
+* [**Capitulo IV: Strategic-Level Software Design**](#_page48_x69.00_y72.00)
+    * [1. Strategic-Level Attribute-Driven Design](#_page48_x69.00_y95.00)
+        * [4.1.1 EventStormingz](#_page48_x69.00_y237.00)
+    * [2. Candidate Context Discovery.](#_page50_x69.00_y572.00)
+    * [3. Domain Message Flows Modeling.](#_page51_x69.00_y464.00)
+    * [4. Bounded Context Canvases.](#_page53_x69.00_y642.00)
+    * [5. Context Mapping](#_page54_x69.00_y382.00)
+    * [6. Tactical-Level Domain-Driven Design](#_page55_x69.00_y448.00)
+        * [6.1 Bounded Context: Geolocalización y Monitoreo](#_page55_x69.00_y497.00)
+        * [6.2 Bounded Context: Gestión de Usuario y Mascotas](#_page59_x69.00_y72.00)
+        * [6.3 Bounded Context User Interface (UI)](#_page64_x69.00_y98.00)
+    * [7. Software Architecture](#_page70_x69.00_y96.00)
+        * [7.1 Software Architecture System Landscape Diagram](#_page70_x69.00_y121.00)
+        * [7.2 Software Architecture Context Level Diagrams](#_page70_x69.00_y383.00)
+        * [7.3 Software Architecture Container Level Diagrams](#_page72_x69.00_y72.00)
+        * [7.4 Software Architecture Deployment Diagrams](#_page73_x69.00_y392.00)
+* [Conclusiones](#_page74_x69.00_y72.00)
+* [Referencias BibliográficasAnexos](#_page74_x69.00_y157.00)
 
 <a name="_page4_x69.00_y535.00"></a>Student Outcome** 
 
